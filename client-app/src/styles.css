@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+.navbar {
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(
+    86deg,
+    rgba(255, 255, 255, 1) 78%,
+    rgba(40, 87, 186, 1) 97%
+  );
+  background: -webkit-linear-gradient(
+    86deg,
+    rgba(255, 255, 255, 1) 78%,
+    rgba(40, 87, 186, 1) 97%
+  );
+  background: linear-gradient(
+    86deg,
+    rgba(255, 255, 255, 1) 78%,
+    rgba(40, 87, 186, 1) 97%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#2857ba",GradientType=1);
+  height: 70px;
+  padding: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 20000;
+  width: 100%;
+  -webkit-box-shadow: 1px 16px 25px 5px rgba(0, 0, 0, 0.29);
+  box-shadow: 1px 16px 25px 5px rgba(0, 0, 0, 0.29);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: unset;
+  gap: 20px;
+}
+
+.nav-logo {
+  height: 60px;
+  width: 180px;
+  margin-left: 10px;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.tab-row{
+    margin-top: 10px;
+}
