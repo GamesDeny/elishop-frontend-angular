@@ -5,20 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { PrimengModule } from './primeng/primeng.module';
+import {HttpClientModule} from '@angular/common/http'
 import { HeaderComponent } from './header/header.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { ProductsTableComponent } from './products-table/products-table.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainpageComponent,
     HeaderComponent,
-    TabsComponent
+    TabsComponent,
+    ProductsTableComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PrimengModule
+    PrimengModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

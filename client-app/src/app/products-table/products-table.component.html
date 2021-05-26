@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <!--Spinner-->
+  <div *ngIf="showLoading; else showTable">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <!--Data table-->
+  <ng-template #showTable>
+    <p-dataView #dv [value]="prodotti" layout="grid" filterBy="nome">
+      <ng-template pTemplate="header">
+        <input
+          type="search"
+          pInputText
+          placeholder="Cerca per nome"
+          (input)="dv.filter($event.target.value)"
+        />
+      </ng-template>
+      <ng-template let-prodotto pTemplate="gridItem">
+        <!--Card Prodotto-->
+        <div class="p-col-12 p-md-4">
+          <p-card [header]="prodotto.nome" [subheader]="prodotto.nomeCategoria">
+            <ng-template pTemplate="header">
+              <img alt="Card" [src]="prodotto.image" />
+            </ng-template>
+            <p>{{ prodotto.descrizione }}</p>
+            <div style="display: flex; gap: 20px">
+              <h4>{{ prodotto.prezzo | currency: "EUR" }}</h4>
+
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-shopping-cart"
+                class="p-button-rounded"
+              ></button>
+            </div>
+          </p-card>
+        </div>
+        <!---->
+      </ng-template>
+    </p-dataView>
+  </ng-template>
+</div>
