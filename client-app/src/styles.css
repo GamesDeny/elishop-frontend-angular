@@ -50,10 +50,22 @@
     margin-top: 30px;
 }
 
-#disponibilita-container{
+.disponibilita-container{
   border: 1px solid lightgray;
   border-radius: 10px;
   justify-content: center;
   padding: 5px;
   
+}
+
+.disponibile{
+  background-color: green;
+}
+
+.limitato{
+  background-color: orange;
+}
+
+.esaurito{
+  background-color: red;
 }

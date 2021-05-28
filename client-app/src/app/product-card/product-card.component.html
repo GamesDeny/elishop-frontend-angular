@@ -1,9 +1,25 @@
 <p-card [header]="prodotto.nome" [subheader]="prodotto.nomeCategoria">
   <ng-template pTemplate="header">
-    <div class="row" style="margin-top: 5px;">
+    <div class="row" style="margin-top: 5px;" *ngIf="disponibile">
       <div class="col-10 offset-1">
-        <div id="disponibilita-container">
-          <h5 style="color: white;">{{ disponibilita }}</h5>
+        <div class="disponibilita-container disponibile">
+          <h5 style="color: white;">Disponibile</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 5px;" *ngIf="limitato">
+      <div class="col-10 offset-1">
+        <div class="disponibilita-container limitato">
+          <h5 style="color: white;">Disponibilità Limitata</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 5px;" *ngIf="nonDisponibile">
+      <div class="col-10 offset-1">
+        <div class="disponibilita-container esaurito">
+          <h5 style="color: white;">Non disponibile</h5>
         </div>
       </div>
     </div>
@@ -19,6 +35,7 @@
       type="button"
       icon="pi pi-shopping-cart"
       class="p-button-rounded"
+      [disabled]="nonDisponibile"
     ></button>
   </div>
 </p-card>

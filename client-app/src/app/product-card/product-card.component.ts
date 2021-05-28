@@ -10,26 +10,30 @@ export class ProductCardComponent implements OnInit {
 
   @Input() prodotto:Prodotto
 
-  disponibilita: string;
-  container = document.getElementById("disponibilita-container");
+  disponibile: boolean;
+  limitato: boolean;
+  nonDisponibile: boolean;
+
 
 
   constructor() { }
 
   chekQuantita(){
+
+    this.disponibile = false;
+    this.limitato = false;
+    this.nonDisponibile = false;
+
     var quantita = this.prodotto.quantita;
 
     if(quantita >= 1 && quantita <=3 ){
-      this.disponibilita = "Disponibilità imitata";
-      this.container.style.backgroundColor = "orange";  
+      this.limitato = true;  
 
     }else if(quantita <= 0){
-      this.disponibilita = "Non disponibile";
-      this.container.style.backgroundColor = "red";
+      this.nonDisponibile = true;
 
     }else{
-      this.disponibilita = "Disponibile";
-      this.container.style.backgroundColor = "green";
+      this.disponibile = true;
     }
   }
 
