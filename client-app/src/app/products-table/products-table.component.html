@@ -18,23 +18,7 @@
       <ng-template let-prodotto pTemplate="gridItem">
         <!--Card Prodotto-->
         <div class="p-col-12 p-md-4">
-          <p-card [header]="prodotto.nome" [subheader]="prodotto.nomeCategoria">
-            <ng-template pTemplate="header">
-              <img alt="Card" [src]="prodotto.image" />
-            </ng-template>
-            <p>{{ prodotto.descrizione }}</p>
-            <div style="display: flex; gap: 20px">
-              <h4>{{ prodotto.prezzo | currency: "EUR" }}</h4>
-
-              <button
-                pButton
-                pRipple
-                type="button"
-                icon="pi pi-shopping-cart"
-                class="p-button-rounded"
-              ></button>
-            </div>
-          </p-card>
+          <app-product-card [prodotto]="prodotto"></app-product-card>
         </div>
         <!---->
       </ng-template>

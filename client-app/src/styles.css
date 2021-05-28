@@ -49,3 +49,11 @@
 .tab-row{
     margin-top: 30px;
 }
+
+#disponibilita-container{
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  justify-content: center;
+  padding: 5px;
+  
+}

@@ -1,0 +1,24 @@
+<p-card [header]="prodotto.nome" [subheader]="prodotto.nomeCategoria">
+  <ng-template pTemplate="header">
+    <div class="row" style="margin-top: 5px;">
+      <div class="col-10 offset-1">
+        <div id="disponibilita-container">
+          <h5 style="color: white;">{{ disponibilita }}</h5>
+        </div>
+      </div>
+    </div>
+
+    <img alt="Card" [src]="prodotto.image" />
+  </ng-template>
+  <div style="display: flex; gap: 20px">
+    <h4>{{ prodotto.prezzo | currency: "EUR" }}</h4>
+
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-shopping-cart"
+      class="p-button-rounded"
+    ></button>
+  </div>
+</p-card>

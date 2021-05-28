@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     HeaderComponent,
     TabsComponent,
     ProductsTableComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
