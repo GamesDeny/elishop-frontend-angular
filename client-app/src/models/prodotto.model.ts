@@ -4,6 +4,7 @@ export class Prodotto{
     descrizione: string;
     nomeCategoria: string;
     prezzo: number;
+    prezzoScontato?:number;
     minOrd: number;
     maxOrd: number;
     sconto: number;

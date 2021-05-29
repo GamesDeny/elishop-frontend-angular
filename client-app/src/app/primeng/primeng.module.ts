@@ -7,6 +7,7 @@ import {DataViewModule} from 'primeng/dataview';
 import {InputTextModule} from 'primeng/inputtext';
 import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
+import {BadgeModule} from 'primeng/badge';
 
 @NgModule({
   declarations: [],
@@ -18,7 +19,8 @@ import {ButtonModule} from 'primeng/button';
     DataViewModule,
     InputTextModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    BadgeModule
   ]
 })
 export class PrimengModule { }

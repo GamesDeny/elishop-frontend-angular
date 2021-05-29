@@ -1,25 +1,28 @@
-<p-card [header]="prodotto.nome" [subheader]="prodotto.nomeCategoria">
+<p-card [header]="prodotto.nome" [subheader]="prodotto.nomeCategoria" styleClass="card">
   <ng-template pTemplate="header">
-    <div class="row" style="margin-top: 5px;" *ngIf="disponibile">
-      <div class="col-10 offset-1">
+    <div class="row" style="margin-top: 5px">
+      <div class="col-8" *ngIf="disponibile">
         <div class="disponibilita-container disponibile">
-          <h5 style="color: white;">Disponibile</h5>
+          <h4 style="color: white">Disponibile</h4>
         </div>
       </div>
-    </div>
 
-    <div class="row" style="margin-top: 5px;" *ngIf="limitato">
-      <div class="col-10 offset-1">
+      <div class="col-8" *ngIf="limitato">
         <div class="disponibilita-container limitato">
-          <h5 style="color: white;">Disponibilità Limitata</h5>
+          <h4 style="color: white">Limitato</h4>
         </div>
       </div>
-    </div>
 
-    <div class="row" style="margin-top: 5px;" *ngIf="nonDisponibile">
-      <div class="col-10 offset-1">
+      <div class="col-8" *ngIf="nonDisponibile">
         <div class="disponibilita-container esaurito">
-          <h5 style="color: white;">Non disponibile</h5>
+          <h4 style="color: white">Non disponibile</h4>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="sconto-container" *ngIf="scontato">
+          <h5>{{ prodotto.sconto }}%</h5>
+          <i class="pi pi-tag" style="color: tomato; font-size: 1rem"></i>
         </div>
       </div>
     </div>
@@ -27,7 +30,10 @@
     <img alt="Card" [src]="prodotto.image" />
   </ng-template>
   <div style="display: flex; gap: 20px">
-    <h4>{{ prodotto.prezzo | currency: "EUR" }}</h4>
+    <h4 *ngIf="!scontato">{{ prodotto.prezzo | currency: "EUR" }}</h4>
+
+    <h4 *ngIf="scontato" class="cancel-text">{{ prodotto.prezzo | currency: "EUR" }}</h4>
+    <h4 *ngIf="scontato">{{ prodotto.prezzoScontato | currency: "EUR" }}</h4>
 
     <button
       pButton
@@ -36,6 +42,7 @@
       icon="pi pi-shopping-cart"
       class="p-button-rounded"
       [disabled]="nonDisponibile"
+      (click)="addToCart()"
     ></button>
   </div>
 </p-card>

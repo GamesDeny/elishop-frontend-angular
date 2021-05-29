@@ -1,11 +1,20 @@
 <div class="navbar">
-    <div class="nav-content">
-        <!--<button pButton pRipple type="button" icon="pi pi-bars" class="p-button menu-button" (click)="showMenu()" ></button>-->
+  <div class="nav-content">
+    <!--<button pButton pRipple type="button" icon="pi pi-bars" class="p-button menu-button" (click)="showMenu()" ></button>-->
 
-        <div>
-            <img src="../../assets/Elishop_logo.png" class="nav-logo" alt="">
-        </div>
+    <div>
+      <img src="../../assets/Elishop_logo.png" class="nav-logo" alt="" />
     </div>
 
+    <div class="nav-left">
+      <p-button
+        label="Il tuo carrello"
+        icon="pi pi-shopping-cart"
+        styleClass="p-button-warning"
+        style="margin-top:5px;"
+        [badge]="this.CarrelloService.carrello.length"
+        badgeClass="p-badge-danger"
+      ></p-button>
+    </div>
+  </div>
 </div>
-
