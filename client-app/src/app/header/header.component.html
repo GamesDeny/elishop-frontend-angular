@@ -15,6 +15,22 @@
         [badge]="this.CarrelloService.carrello.length"
         badgeClass="p-badge-danger"
       ></p-button>
+
+      <p-button
+        label="Accedi/Registrati"
+        icon="pi pi-user"
+        styleClass="p-button-rounded"
+        style="margin-top: 5px;"
+        *ngIf="!isLogged()"
+      ></p-button>
+
+      <p-button
+        [label]="utente.nome"
+        icon="pi pi-user"
+        styleClass="p-button-rounded"
+        style="margin-top: 5px;"
+        *ngIf="isLogged()"
+      ></p-button>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Prodotto } from 'src/models/prodotto.model';
+import { CategoriaService } from '../categoria.service';
 import { ProdottiService } from '../prodotti.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class ProductsTableComponent implements OnInit {
   showLoading: boolean;
 
   constructor(
-    private ProdottiService: ProdottiService
+    private ProdottiService: ProdottiService,
+    private CategoriaService: CategoriaService
   ) { }
 
   getProdotti(){
@@ -23,6 +25,7 @@ export class ProductsTableComponent implements OnInit {
       (response) => {
         this.prodotti = response;
         console.log(this.prodotti);
+        
         
       },
       (err) => {
@@ -34,6 +37,18 @@ export class ProductsTableComponent implements OnInit {
       }
     )
   }
+
+  getCategorie(){
+    for(let i=0; i<this.prodotti.length; i++){
+      this.CategoriaService.getById(this.prodotti[i].categoria_id).subscribe(
+        (response)=> {
+          console.log(response);
+          this.prodotti[i].categoria = response;
+        }
+      )
+    }
+  }
+
 
   ngOnInit(): void {
     this.getProdotti();

@@ -1,4 +1,4 @@
-<p-card [header]="prodotto.nome" [subheader]="prodotto.nomeCategoria" styleClass="card">
+<p-card [header]="prodotto.nome" styleClass="card">
   <ng-template pTemplate="header">
     <div class="row" style="margin-top: 5px">
       <div class="col-8" *ngIf="disponibile">
@@ -27,12 +27,14 @@
       </div>
     </div>
 
-    <img alt="Card" [src]="prodotto.image" />
+    <img alt="Card" [src]="prodotto.image" class="card-img" />
   </ng-template>
   <div style="display: flex; gap: 20px">
     <h4 *ngIf="!scontato">{{ prodotto.prezzo | currency: "EUR" }}</h4>
 
-    <h4 *ngIf="scontato" class="cancel-text">{{ prodotto.prezzo | currency: "EUR" }}</h4>
+    <h4 *ngIf="scontato" class="cancel-text">
+      {{ prodotto.prezzo | currency: "EUR" }}
+    </h4>
     <h4 *ngIf="scontato">{{ prodotto.prezzoScontato | currency: "EUR" }}</h4>
 
     <button
