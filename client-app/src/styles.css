@@ -42,6 +42,10 @@
   gap: 20px;
 }
 
+.nav-button{
+  margin-top: 5px !important;
+}
+
 .nav-logo {
   height: 60px;
   width: 180px;
@@ -96,6 +100,37 @@
 .cancel-text{
   text-decoration: line-through;
   color: lightgray;
+}
+
+.logo-row{
+  display: flex;
+  justify-content: center;
+}
+
+.login-logo{
+  width: 300px;
+  height: 100px;
+}
+
+.form-label{
+  color: orange;
+}
+
+.form-container{
+  width: 100%;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.login-button{
+  width: 100% !important;
+  background-color: #0f5171 !important;
+}
+
+.error{
+  color: red;
 }
 
 /*Animazione card*/

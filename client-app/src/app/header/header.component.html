@@ -10,8 +10,7 @@
       <p-button
         label="Il tuo carrello"
         icon="pi pi-shopping-cart"
-        styleClass="p-button-warning"
-        style="margin-top:5px;"
+        styleClass="p-button-warning nav-button"
         [badge]="this.CarrelloService.carrello.length"
         badgeClass="p-badge-danger"
       ></p-button>
@@ -19,16 +18,15 @@
       <p-button
         label="Accedi/Registrati"
         icon="pi pi-user"
-        styleClass="p-button-rounded"
-        style="margin-top: 5px;"
+        styleClass="p-button-rounded nav-button"
+        (click)="navToLogin()"
         *ngIf="!isLogged()"
       ></p-button>
 
       <p-button
         [label]="utente.nome"
         icon="pi pi-user"
-        styleClass="p-button-rounded"
-        style="margin-top: 5px;"
+        styleClass="p-button-rounded nav-button"
         *ngIf="isLogged()"
       ></p-button>
     </div>

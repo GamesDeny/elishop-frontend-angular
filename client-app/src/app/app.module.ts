@@ -11,6 +11,8 @@ import { TabsComponent } from './tabs/tabs.component';
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,13 +23,15 @@ import { ProductCardComponent } from './product-card/product-card.component';
     TabsComponent,
     ProductsTableComponent,
     LoadingSpinnerComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PrimengModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

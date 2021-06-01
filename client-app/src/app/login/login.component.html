@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="logo-row">
+        <img src="../../assets/Elishop_logo.png" class="login-logo" alt="" />
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-10 offset-1">
+      <div class="form-container">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <h5 class="form-label">Nome utente:</h5>
+          <input type="text" pInputText formControlName="username" />
+          <br />
+          <br />
+          <h5 class="form-label">Password:</h5>
+          <p-password
+            [feedback]="false"
+            [toggleMask]="true"
+            formControlName="password"
+          ></p-password>
+          <br />
+          <br />
+          <br />
+          <div class="row">
+            <p-button
+              label="Accedi"
+              icon="pi pi-user"
+              styleClass="p-button-rounded login-button"
+              [loading]="showLoading"
+              type="submit"
+            ></p-button>
+            <p class="error" *ngIf="error">Errore durante la procedura</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

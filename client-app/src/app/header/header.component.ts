@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Path } from 'src/models/path.enum';
 import { Utente } from 'src/models/utente.model';
 import { CarrelloService } from '../carrello.service';
 
@@ -10,7 +12,7 @@ import { CarrelloService } from '../carrello.service';
 export class HeaderComponent implements OnInit {
   @Input() utente: Utente;
 
-  constructor(public CarrelloService: CarrelloService) {}
+  constructor(public CarrelloService: CarrelloService, private router: Router) {}
 
   isLogged(): boolean {
     if (this.utente != null && this.utente != undefined) {
@@ -18,6 +20,10 @@ export class HeaderComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  navToLogin(){
+    this.router.navigate([Path.Login]);
   }
 
   ngOnInit(): void {}
