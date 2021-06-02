@@ -124,6 +124,10 @@
   gap: 20px;
 }
 
+.register-form{
+  margin-top: 80px;
+}
+
 .login-button{
   width: 100% !important;
   background-color: #0f5171 !important;
@@ -131,6 +135,12 @@
 
 .error{
   color: red;
+}
+
+.home-redirect:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  color: #0f5171;
 }
 
 /*Animazione card*/

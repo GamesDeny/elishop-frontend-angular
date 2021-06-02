@@ -9,6 +9,8 @@ import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import {BadgeModule} from 'primeng/badge';
 import {PasswordModule} from 'primeng/password';
+import {CalendarModule} from 'primeng/calendar';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [],
@@ -22,7 +24,9 @@ import {PasswordModule} from 'primeng/password';
     CardModule,
     ButtonModule,
     BadgeModule,
-    PasswordModule
+    PasswordModule,
+    CalendarModule,
+    InputNumberModule
   ]
 })
 export class PrimengModule { }

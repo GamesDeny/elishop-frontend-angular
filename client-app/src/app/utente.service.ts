@@ -19,4 +19,8 @@ export class UtenteService {
     return this.http.post(`${environment.apiUrl}/utente/login`, utente);
   }
 
+  register(utente){
+    return this.http.post(`${environment.apiUrl}/utente/add`, utente);
+  }
+
 }

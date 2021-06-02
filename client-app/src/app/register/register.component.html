@@ -1,0 +1,111 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="logo-row">
+        <img src="../../assets/Elishop_logo.png" class="login-logo" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div>
+        <form [formGroup]="signUpForm" (ngSubmit)="register()">
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-md-6">
+              <label for="nome" class="form-label">Nome</label>
+              <input id="nome" type="text" formControlName="nome" pInputText />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="cognome" class="form-label">Cognome</label>
+              <input
+                id="cognome"
+                type="text"
+                formControlName="cognome"
+                pInputText
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="username" class="form-label">Nome Utente</label>
+              <input
+                id="username"
+                type="text"
+                formControlName="username"
+                pInputText
+              />
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="dataNascita" class="form-label"
+                >Data di nascita</label
+              >
+              <p-calendar
+                id="dataNascita"
+                formControlName="dataNascita"
+                [monthNavigator]="true"
+                [yearNavigator]="true"
+                yearRange="2000:2030"
+              ></p-calendar>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <label for="mail" class="form-label">E-mail</label>
+              <input
+                id="mail"
+                type="text"
+                formControlName="mail"
+                placeholder="example@example.com"
+                pInputText
+              />
+            </div>
+
+            <div class="p-field p-col-12">
+              <label for="siglaResidenza" class="form-label"
+                >Sigla Residenza</label
+              >
+              <p-inputNumber
+                id="siglaResidenza"
+                formControlName="siglaResidenza"
+              ></p-inputNumber>
+            </div>
+          </div>
+          <div class="p-field p-col-12 p-md-6">
+            <label for="password" class="form-label">Password</label>
+            <br />
+            <p-password
+              id="password"
+              [feedback]="false"
+              [toggleMask]="true"
+              formControlName="password"
+            ></p-password>
+          </div>
+          <div class="p-field p-col-12 p-md-6">
+            <label for="confermaPassword" class="form-label"
+              >Conferma Password</label
+            >
+            <br />
+            <p-password
+              id="confermaPassword"
+              [feedback]="false"
+              [toggleMask]="true"
+              formControlName="confermaPassword"
+            ></p-password>
+            <p class="error" *ngIf="passwordError">
+              Errore: Le due password devono coincidere
+            </p>
+          </div>
+          <br />
+          <div class="p-field p-col-12 p-md-9">
+            <p-button
+              type="submit"
+              label="Registrati"
+              icon="pi pi-sign-in"
+              styleClass="p-button-rounded login-button"
+              [loading]="showLoading"
+              [disabled]="!this.signUpForm.valid"
+            ></p-button>
+            <p class="error" *ngIf="error">Errore durante la procedura</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

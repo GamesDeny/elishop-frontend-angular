@@ -13,6 +13,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { ProductCardComponent } from './product-card/product-card.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsTableComponent,
     LoadingSpinnerComponent,
     ProductCardComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

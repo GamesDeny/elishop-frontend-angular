@@ -47,6 +47,14 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  navToRegister(){
+    this.router.navigate([Path.Register]);
+  }
+
+  navToHome(){
+    this.router.navigate([Path.Mainpage]);
+  }
+
   ngOnInit(): void {
     this.initForm()
   }

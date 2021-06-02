@@ -1,4 +1,4 @@
-<p-card [header]="prodotto.nome" styleClass="card">
+<p-card [header]="prodotto.nome" [subheader]="prodotto.categoria.nome" styleClass="card">
   <ng-template pTemplate="header">
     <div class="row" style="margin-top: 5px">
       <div class="col-8" *ngIf="disponibile">

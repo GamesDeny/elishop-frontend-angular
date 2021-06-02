@@ -25,7 +25,7 @@ export class ProductsTableComponent implements OnInit {
       (response) => {
         this.prodotti = response;
         console.log(this.prodotti);
-        
+        this.getCategorie();
         
       },
       (err) => {
