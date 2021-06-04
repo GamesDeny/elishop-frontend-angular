@@ -1,0 +1,25 @@
+<div class="row" *ngIf="showLoading; else showRow">
+  <div>
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+  </div>
+</div>
+
+<ng-template #showRow>
+  <ng-template pTemplate="body">
+    <tr>
+      <td>{{ prodottoAssociato.nome }}</td>
+      <td>
+        <img
+          [src]="prodottoAssociato.image"
+          [alt]="prodottoAssociato.nome"
+          width="100"
+          class="p-shadow-4"
+        />
+      </td>
+      <td>{{ prodottoAssociato.categoria.nome }}</td>
+      <td>{{ prodotto.quantitaProdotto }}</td>
+      <td>{{ prodotto.prezzoTotale | currency: "EUR" }}</td>
+      <td>{{ prodottoAssociato.sconto }}%</td>
+    </tr>
+  </ng-template>
+</ng-template>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { OverlayPanel } from 'primeng/overlaypanel';
 import { Prodotto } from 'src/models/prodotto.model';
 import { CarrelloService } from '../carrello.service';
 
@@ -14,10 +15,10 @@ export class ProductCardComponent implements OnInit {
   limitato: boolean;
   nonDisponibile: boolean;
   scontato: boolean;
+  quantitaSelezionata: number;
+  showDialog: boolean;
 
-  constructor(
-    private CarrelloService: CarrelloService
-  ) {}
+  constructor(private CarrelloService: CarrelloService) {}
 
   chekQuantita() {
     this.disponibile = false;
@@ -39,17 +40,22 @@ export class ProductCardComponent implements OnInit {
     if (this.prodotto.sconto > 0) {
       this.scontato = true;
 
-      let sconto = ((this.prodotto.prezzo / 100) * this.prodotto.sconto);
+      let sconto = (this.prodotto.prezzo / 100) * this.prodotto.sconto;
 
       this.prodotto.prezzoScontato = this.prodotto.prezzo - sconto;
-        
     }
   }
 
-  addToCart(){
-    this.CarrelloService.addProdotto(this.prodotto);
-    console.log(this.CarrelloService.carrello);
-    
+  addToCart() {
+    if (this.quantitaSelezionata > 0) {
+      this.CarrelloService.addProdotto(this.prodotto, this.quantitaSelezionata);
+      console.log(this.CarrelloService.carrello);
+      this.showDialog = false;
+    }
+  }
+
+  showPanel(panel: OverlayPanel, event: MouseEvent) {
+    panel.toggle(event);
   }
 
   ngOnInit(): void {

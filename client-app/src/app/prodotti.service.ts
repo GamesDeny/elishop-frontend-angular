@@ -17,4 +17,8 @@ export class ProdottiService {
   getAll(){
     return this.http.get<Prodotto[]>(`${environment.apiUrl}${this.urlSuffix}/all`);
   }
+
+  getById(id){
+    return this.http.get<Prodotto>(`${environment.apiUrl}${this.urlSuffix}/id/${id}`);
+  }
 }

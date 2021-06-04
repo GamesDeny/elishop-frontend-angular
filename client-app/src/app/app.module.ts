@@ -13,8 +13,10 @@ import { ProductsTableComponent } from './products-table/products-table.componen
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { CartRowComponent } from './cart-row/cart-row.component';
+import { CartTableComponent } from './cart-table/cart-table.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { RegisterComponent } from './register/register.component';
     LoadingSpinnerComponent,
     ProductCardComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CartRowComponent,
+    CartTableComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     PrimengModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

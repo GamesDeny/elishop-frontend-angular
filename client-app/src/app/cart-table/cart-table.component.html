@@ -1,0 +1,42 @@
+<!--Spinner-->
+<div *ngIf="showLoading; else showTable">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<!--Data table-->
+<ng-template #showTable>
+  <p-table [value]="righeCarrello">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nome</th>
+        <th>Immagine</th>
+        <th>Categoria</th>
+        <th>Quantità</th>
+        <th>Prezzo</th>
+        <th>Sconto Applicato</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prodotto>
+        <tr>
+            <td>{{ prodotto.nome }}</td>
+            <td>
+              <img
+                [src]="prodotto.immagine"
+                [alt]="prodotto.nome"
+                width="100"
+                class="p-shadow-4"
+              />
+            </td>
+            <td>{{ prodotto.categoria }}</td>
+            <td>{{ prodotto.quantita }}</td>
+            <td>{{ prodotto.prezzo | currency: "EUR" }}</td>
+            <td>{{ prodotto.sconto }}%</td>
+          </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        Totale: {{ calcolaTotale() | currency: "EUR" }}
+      </div>
+    </ng-template>
+  </p-table>
+</ng-template>

@@ -13,6 +13,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {MenuModule} from 'primeng/menu';
+import {DialogModule} from 'primeng/dialog';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [],
@@ -30,7 +32,9 @@ import {MenuModule} from 'primeng/menu';
     CalendarModule,
     InputNumberModule,
     OverlayPanelModule,
-    MenuModule
+    MenuModule,
+    DialogModule,
+    TableModule
   ]
 })
 export class PrimengModule { }
