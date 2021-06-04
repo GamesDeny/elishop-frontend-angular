@@ -11,6 +11,8 @@ import {BadgeModule} from 'primeng/badge';
 import {PasswordModule} from 'primeng/password';
 import {CalendarModule} from 'primeng/calendar';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {MenuModule} from 'primeng/menu';
 
 @NgModule({
   declarations: [],
@@ -26,7 +28,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
     BadgeModule,
     PasswordModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+    OverlayPanelModule,
+    MenuModule
   ]
 })
 export class PrimengModule { }

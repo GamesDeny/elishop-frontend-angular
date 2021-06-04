@@ -17,7 +17,7 @@
       </ng-template>
       <ng-template let-prodotto pTemplate="gridItem">
         <!--Card Prodotto-->
-        <div class="p-col-12 p-md-4">
+        <div class="p-col-12 p-md-4" *ngIf="prodotto.categoria.nome">
           <app-product-card [prodotto]="prodotto"></app-product-card>
         </div>
         <!---->

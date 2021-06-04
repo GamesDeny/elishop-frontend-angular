@@ -1,21 +1,25 @@
-<p-card [header]="prodotto.nome" [subheader]="prodotto.categoria.nome" styleClass="card">
+<p-card
+  [header]="prodotto.nome"
+  [subheader]="prodotto.categoria.nome"
+  styleClass="card"
+>
   <ng-template pTemplate="header">
     <div class="row" style="margin-top: 5px">
       <div class="col-8" *ngIf="disponibile">
-        <div class="disponibilita-container disponibile">
-          <h4 style="color: white">Disponibile</h4>
+        <div class="disponibilita-container">
+          <h4 class="disponibile">Disponibile</h4>
         </div>
       </div>
 
       <div class="col-8" *ngIf="limitato">
-        <div class="disponibilita-container limitato">
-          <h4 style="color: white">Limitato</h4>
+        <div class="disponibilita-container">
+          <h4 class="limitato">Limitato</h4>
         </div>
       </div>
 
       <div class="col-8" *ngIf="nonDisponibile">
-        <div class="disponibilita-container esaurito">
-          <h4 style="color: white">Non disponibile</h4>
+        <div class="disponibilita-container">
+          <h4 class="esaurito">Non disponibile</h4>
         </div>
       </div>
 

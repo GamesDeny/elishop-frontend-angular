@@ -28,7 +28,15 @@
         icon="pi pi-user"
         styleClass="p-button-rounded nav-button"
         *ngIf="isLogged()"
+        (click)="showOpzioni(opzioniUtente, $event)"
       ></p-button>
+
+      <!--Overlay Utente-->
+      <p-overlayPanel #opzioniUtente>
+        <ng-template pTemplate>
+          <p-menu [model]="opzioni"></p-menu>
+        </ng-template>
+      </p-overlayPanel>
     </div>
   </div>
 </div>

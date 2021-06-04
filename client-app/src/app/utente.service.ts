@@ -22,5 +22,8 @@ export class UtenteService {
   register(utente){
     return this.http.post(`${environment.apiUrl}/utente/add`, utente);
   }
-
+  
+  logout(){
+    sessionStorage.removeItem("utente");
+  }
 }

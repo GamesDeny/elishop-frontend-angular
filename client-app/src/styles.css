@@ -63,23 +63,21 @@
 }
 
 .disponibilita-container{
-  border: 1px solid lightgray;
-  border-radius: 10px;
   justify-content: center;
   padding: 5px;
   
 }
 
 .disponibile{
-  background-color: green;
+  color: green;
 }
 
 .limitato{
-  background-color: orange;
+  color: orange;
 }
 
 .esaurito{
-  background-color: red;
+  color: red;
 }
 
 .sconto-container{
@@ -114,6 +112,10 @@
 
 .form-label{
   color: orange;
+}
+
+.logout-label{
+  color: red;
 }
 
 .form-container{
