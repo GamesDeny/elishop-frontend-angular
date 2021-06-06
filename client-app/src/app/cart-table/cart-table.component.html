@@ -5,6 +5,16 @@
 
 <!--Data table-->
 <ng-template #showTable>
+  <button
+    pButton
+    pRipple
+    type="button"
+    label="Svuota carrello"
+    icon="pi pi-trash"
+    class="p-button-warning"
+    (click)="rimuoviTutti()"
+  ></button>
+  <br>
   <p-table [value]="righeCarrello">
     <ng-template pTemplate="header">
       <tr>
@@ -17,25 +27,45 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-prodotto>
-        <tr>
-            <td>{{ prodotto.nome }}</td>
-            <td>
-              <img
-                [src]="prodotto.immagine"
-                [alt]="prodotto.nome"
-                width="100"
-                class="p-shadow-4"
-              />
-            </td>
-            <td>{{ prodotto.categoria }}</td>
-            <td>{{ prodotto.quantita }}</td>
-            <td>{{ prodotto.prezzo | currency: "EUR" }}</td>
-            <td>{{ prodotto.sconto }}%</td>
-          </tr>
+      <tr>
+        <td>{{ prodotto.nome }}</td>
+        <td>
+          <img
+            [src]="prodotto.immagine"
+            [alt]="prodotto.nome"
+            width="100"
+            class="p-shadow-4"
+          />
+        </td>
+        <td>{{ prodotto.categoria }}</td>
+        <td>
+          {{ prodotto.quantita }}
+          <!--<button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pencil cart-button-icon"
+            class="p-button-rounded cart-button"
+          ></button>-->
+        </td>
+        <td>{{ prodotto.prezzo | currency: "EUR" }}</td>
+        <td>{{ prodotto.sconto }}%</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            label="Rimuovi"
+            icon="pi pi-trash"
+            class="p-button-danger"
+            (click)="rimuoviProdotto(prodotto)"
+          ></button>
+        </td>
+      </tr>
     </ng-template>
     <ng-template pTemplate="summary">
       <div class="p-d-flex p-ai-center p-jc-between">
-        Totale: {{ calcolaTotale() | currency: "EUR" }}
+        Totale: {{ prezzoTotale | currency: "EUR" }}
       </div>
     </ng-template>
   </p-table>

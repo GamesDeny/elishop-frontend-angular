@@ -135,6 +135,16 @@
   background-color: #0f5171 !important;
 }
 
+.cart-button{
+  width: 25px !important;
+  height: 25px !important;
+  padding: 2px !important; 
+}
+
+.cart-button-icon{
+  font-size: 1rem !important;
+}
+
 .error{
   color: red;
 }

@@ -15,6 +15,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {MenuModule} from 'primeng/menu';
 import {DialogModule} from 'primeng/dialog';
 import {TableModule} from 'primeng/table';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [],
@@ -34,7 +35,8 @@ import {TableModule} from 'primeng/table';
     OverlayPanelModule,
     MenuModule,
     DialogModule,
-    TableModule
+    TableModule,
+    RadioButtonModule
   ]
 })
 export class PrimengModule { }

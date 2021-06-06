@@ -27,16 +27,12 @@ export class CartTableComponent implements OnInit, DoCheck {
   ) {}
 
   ngDoCheck(): void {
-    /*if(this.righeCarrello != undefined){
-      if(this.righeCarrello.length = 0){
-        this.showLoading = true;
-      }
-    }*/
+    this.calcolaTotale();
     
   }
 
-  calcolaTotale():number{
-    return this.CarrelloService.calcolaTotale();
+  calcolaTotale(){
+    this.prezzoTotale = this.CarrelloService.calcolaTotale();
   }
 
   ngOnInit(): void {
@@ -44,5 +40,29 @@ export class CartTableComponent implements OnInit, DoCheck {
     
    // this.getCarrello();
     
+  }
+
+  rimuoviProdotto(rigaCarrello: RigaCarrello){
+
+    for(let i=0; i<this.righeCarrello.length; i++){
+
+      if(this.righeCarrello[i].idProdotto == rigaCarrello.idProdotto){
+        this.righeCarrello.splice(i, 1);
+      }
+    }
+
+    console.log("rimuovo prodotto dal carrello");
+    
+    this.CarrelloService.removeProdotto(rigaCarrello);
+    console.log("Tabella dopo la rimozione");
+    
+    console.log(this.righeCarrello);
+    this.calcolaTotale();
+      
+  }
+
+  rimuoviTutti(){
+    this.righeCarrello.splice(0, this.righeCarrello.length);
+    this.CarrelloService.removeAll();
   }
 }

@@ -44,7 +44,7 @@
         header="Il tuo carrello"
         [(visible)]="showDialog"
         [modal]="true"
-        [style]="{ width: '70vw' }"
+        [style]="{ width: '100vw' }"
         [baseZIndex]="10000"
         [draggable]="false"
         [resizable]="false"
@@ -55,8 +55,9 @@
         <ng-template pTemplate="footer">
           <p-button
             icon="pi pi-check"
-            label="Ok"
+            label="Conferma"
             styleClass="p-button-text"
+            (click)="navToCheckout()"
           ></p-button>
         </ng-template>
       </p-dialog>

@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { CartRowComponent } from './cart-row/cart-row.component';
 import { CartTableComponent } from './cart-table/cart-table.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CartTableComponent } from './cart-table/cart-table.component';
     LoginComponent,
     RegisterComponent,
     CartRowComponent,
-    CartTableComponent
+    CartTableComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

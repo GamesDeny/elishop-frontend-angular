@@ -94,6 +94,7 @@ export class HeaderComponent implements OnInit {
             prodottoAssociato.categoria = response;
 
             let rigaCarrello: RigaCarrello = new RigaCarrello;
+            rigaCarrello.idProdotto = prodottoAssociato.id;
             rigaCarrello.nome = prodottoAssociato.nome;
             rigaCarrello.immagine = prodottoAssociato.image;
             rigaCarrello.categoria = prodottoAssociato.categoria.nome;
@@ -111,5 +112,13 @@ export class HeaderComponent implements OnInit {
     this.showDialog = true;
     
     
+  }
+
+  navToCheckout(){
+    if(this.CarrelloService.carrello.length>=1){
+      this.showDialog = false;
+      this.router.navigate([Path.Checkout]);
+    }
+   
   }
 }

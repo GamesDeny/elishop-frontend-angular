@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <!--Loading spinner-->
+  <div *ngIf="showLoading; else showContent">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <!--Contenuto-->
+  <ng-template #showContent>
+    <div class="row tab-row">
+      <div class="col-10 offset-1">
+        <div class="row" style="text-align: center">
+          <h2>Seleziona un metodo di pagamento</h2>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+          <div *ngFor="let metodo of metodiPagamento" class="p-field-checkbox">
+            <p-radioButton
+              [inputId]="metodo.id"
+              name="metodo"
+              [value]="metodo"
+              [(ngModel)]="metodoSelezionato"
+            ></p-radioButton>
+            <label [for]="metodo.id">{{ metodo.nome }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <button
+            pButton
+            pRipple
+            type="button"
+            label="Conferma"
+            icon="pi pi-check"
+            class="p-button-primary"
+            (click)="effettuaOrdine()"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

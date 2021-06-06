@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { exists } from 'fs';
 import { Prodotto } from 'src/models/prodotto.model';
+import { RigaCarrello } from 'src/models/riga-carrello.model';
 import { RigaOrdine } from 'src/models/riga-ordine.model';
 
 @Injectable({
@@ -55,15 +55,20 @@ export class CarrelloService {
     return this.prezzoTotale;
   }
 
-  removeProdotto(prodotto: Prodotto) {
-    let idProdotto = prodotto.id;
+  removeProdotto(prodotto: RigaCarrello) {
+    let idProdotto = prodotto.idProdotto;
 
     for (let i = 0; i < this.carrello.length; i++) {
-      if (idProdotto == this.carrello[i].id) {
+      if (idProdotto == this.carrello[i].prodotto_id) {
         this.carrello.splice(i, 1);
         this.prezzoTotale -= prodotto.prezzo;
       }
     }
+
+    console.log("carrello dopo rimozione");
+    console.log(this.carrello);
+    
+    
   }
 
   removeAll() {

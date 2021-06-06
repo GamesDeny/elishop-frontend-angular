@@ -2,5 +2,6 @@ export enum Path{
     Mainpage = "",
     TabsPage = "",
     Login = "login",
-    Register = "register"
+    Register = "register",
+    Checkout = "checkout"
 }
