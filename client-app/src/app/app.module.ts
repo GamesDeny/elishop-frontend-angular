@@ -18,6 +18,8 @@ import { RegisterComponent } from './register/register.component';
 import { CartRowComponent } from './cart-row/cart-row.component';
 import { CartTableComponent } from './cart-table/cart-table.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -42,9 +44,10 @@ import { CheckoutComponent } from './checkout/checkout.component';
     PrimengModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

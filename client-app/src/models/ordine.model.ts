@@ -1,5 +1,7 @@
+import { RigaOrdine } from "./riga-ordine.model";
+
 export class Ordine{
     id: number;
     userId: number;
-    righe: number[];
+    righe: RigaOrdine[];
 }

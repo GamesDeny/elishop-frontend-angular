@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Prodotto } from 'src/models/prodotto.model';
 import { CategoriaService } from '../categoria.service';
+import { OrdineService } from '../ordine.service';
 import { ProdottiService } from '../prodotti.service';
 
 @Component({
@@ -15,7 +17,9 @@ export class ProductsTableComponent implements OnInit {
 
   constructor(
     private ProdottiService: ProdottiService,
-    private CategoriaService: CategoriaService
+    private CategoriaService: CategoriaService,
+    private OrdineService: OrdineService,
+    private messageService: MessageService
   ) { }
 
   getProdotti(){
@@ -49,8 +53,23 @@ export class ProductsTableComponent implements OnInit {
     }
   }
 
+  showMessage(){
+    if(this.OrdineService.orderSuccess == true){
+      console.log("add message");
+      this.messageService.add(
+        {
+          severity: "success",
+          summary: "Successo",
+          detail: "Ordine effettuato con successo"
+        }
+      );  
+      this.OrdineService.orderSuccess = false;
+    }
+  }
+
 
   ngOnInit(): void {
+    this.showMessage();
     this.getProdotti();
   }
 

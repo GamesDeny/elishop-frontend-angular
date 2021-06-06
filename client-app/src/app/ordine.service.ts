@@ -10,6 +10,8 @@ import { TipoPagamento } from 'src/models/tipo-pagamento.model';
 })
 export class OrdineService {
 
+  orderSuccess: boolean;
+
   constructor(private http: HttpClient) { }
 
   addNewRiga(rigaOrdine){
@@ -24,7 +26,7 @@ export class OrdineService {
     return this.http.post<Pagamento>(`${environment.apiUrl}/pagamento/add`, pagamento);
   }
 
-  addNewOrdine(ordine, idUtente, idPagamento){
-    return this.http.post(`${environment.apiUrl}/ordine/add/${idUtente}/${idPagamento}`, ordine);
+  addNewOrdine(righeOrdine, idUtente, idPagamento){
+    return this.http.post(`${environment.apiUrl}/ordine/add/${idUtente}/${idPagamento}`, righeOrdine);
   }
 }

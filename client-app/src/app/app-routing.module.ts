@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Path } from 'src/models/path.enum';
+import { AuthenticationGuard } from './authentication.guard';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
@@ -26,7 +27,8 @@ const routes: Routes = [
       },
       {
         path: Path.Checkout,
-        component: CheckoutComponent
+        component: CheckoutComponent,
+        canActivate: [AuthenticationGuard]
       }
     ]
   }

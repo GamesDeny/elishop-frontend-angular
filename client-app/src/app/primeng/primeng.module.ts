@@ -16,13 +16,14 @@ import {MenuModule} from 'primeng/menu';
 import {DialogModule} from 'primeng/dialog';
 import {TableModule} from 'primeng/table';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
   exports: [
+    CommonModule,
     TabViewModule,
     DataViewModule,
     InputTextModule,
@@ -36,7 +37,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     MenuModule,
     DialogModule,
     TableModule,
-    RadioButtonModule
+    RadioButtonModule,
+    ToastModule
   ]
 })
 export class PrimengModule { }
