@@ -5,6 +5,8 @@ import { AuthenticationGuard } from './authentication.guard';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RegisterComponent } from './register/register.component';
 import { TabsComponent } from './tabs/tabs.component';
 
@@ -29,6 +31,14 @@ const routes: Routes = [
         path: Path.Checkout,
         component: CheckoutComponent,
         canActivate: [AuthenticationGuard]
+      },
+      {
+        path: Path.OrderSuccess,
+        component: OrderSuccessComponent,
+      },
+      {
+        path: Path.ProductDetails + '/:id',
+        component: ProductDetailsComponent
       }
     ]
   }

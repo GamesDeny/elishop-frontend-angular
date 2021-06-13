@@ -1,0 +1,128 @@
+<!--Spinner-->
+<div *ngIf="showLoading; else showDetails">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<ng-template #showDetails>
+  <div class="row tab-row">
+    <div class="col-10 offset-1">
+      <div class="row">
+        <h1 class="form-label">Dettagli Prodotto</h1>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-6">
+          <img
+            [src]="prodotto.image"
+            alt="immagine prodotto"
+            class="img-info"
+          />
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">
+              <div class="container-info">
+                <div class="row w-100">
+                  <div class="info-label">
+                    <h2 class="form-label">Nome:</h2>
+                    <h2>{{ prodotto.nome }}</h2>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="info-label">
+                    <h2 class="form-label">Descrizione:</h2>
+                    <h2>{{ prodotto.descrizione }}</h2>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="info-label">
+                    <h2 class="form-label">Categoria:</h2>
+                    <h2>{{ prodotto.categoria.nome }}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="row">
+        <div class="col-6">
+          <div class="info-label">
+            <h2 class="form-label">Prezzo:</h2>
+            <h2 *ngIf="!scontato">{{ prodotto.prezzo | currency: "EUR" }}</h2>
+            <div *ngIf="scontato">
+              <h2 *ngIf="scontato" class="cancel-text">
+                {{ prodotto.prezzo | currency: "EUR" }}
+              </h2>
+              <div class="sconto-container" *ngIf="scontato">
+                <h4>{{ prodotto.sconto }}%</h4>
+                <i class="pi pi-tag" style="color: tomato; font-size: 1rem"></i>
+              </div>
+            </div>
+            <h2 *ngIf="scontato">
+              {{ prodotto.prezzoScontato | currency: "EUR" }}
+            </h2>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="info-label">
+            <button
+              type="button"
+              pButton
+              pRipple
+              class="p-button p-button primary"
+              label="Aggiungi al carrello"
+              icon="pi pi-shopping-cart"
+              [disabled]="esaurito"
+              (click)="showDialog = true"
+            ></button>
+
+            <h3 *ngIf="!esaurito" class="disponibile">
+              Disponibili: {{ prodotto.quantita }}
+            </h3>
+            <h3 *ngIf="esaurito" class="esaurito">Non disponibile</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Pannello selezione quantità-->
+  <p-dialog
+    header="Seleziona quantità"
+    [(visible)]="showDialog"
+    position="left"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <h5>{{ prodotto.nome }}</h5>
+    <p-inputNumber
+      [(ngModel)]="quantitaSelezionata"
+      [showButtons]="true"
+      buttonLayout="horizontal"
+      spinnerMode="horizontal"
+      decrementButtonClass="p-button-secondary"
+      incrementButtonClass="p-button-secondary"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus"
+      [min]="prodotto.minOrd"
+      [max]="prodotto.maxOrd"
+    >
+    </p-inputNumber>
+    <ng-template pTemplate="footer">
+      <p-button
+        icon="pi pi-check"
+        (click)="addToCart()"
+        label="Ok"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+  </p-dialog>
+</ng-template>

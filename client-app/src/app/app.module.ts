@@ -20,6 +20,8 @@ import { CartTableComponent } from './cart-table/cart-table.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { ToastModule } from 'primeng/toast';
     RegisterComponent,
     CartRowComponent,
     CartTableComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ProductDetailsComponent,
+    OrderSuccessComponent
   ],
   imports: [
     BrowserModule,

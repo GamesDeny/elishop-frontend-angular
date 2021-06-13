@@ -3,5 +3,7 @@ export enum Path{
     TabsPage = "",
     Login = "login",
     Register = "register",
-    Checkout = "checkout"
+    Checkout = "checkout",
+    OrderSuccess = "order-success",
+    ProductDetails = "product-details"
 }

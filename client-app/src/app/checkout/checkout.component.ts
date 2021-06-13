@@ -98,7 +98,7 @@ export class CheckoutComponent implements OnInit {
             () => {
 
               this.OrdineService.orderSuccess = true;
-              this.router.navigate([Path.Mainpage]);    
+              this.router.navigate([Path.OrderSuccess]);    
             });
           }
         );

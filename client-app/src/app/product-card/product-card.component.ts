@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OverlayPanel } from 'primeng/overlaypanel';
+import { Path } from 'src/models/path.enum';
 import { Prodotto } from 'src/models/prodotto.model';
 import { CarrelloService } from '../carrello.service';
 
@@ -18,7 +20,7 @@ export class ProductCardComponent implements OnInit {
   quantitaSelezionata: number;
   showDialog: boolean;
 
-  constructor(private CarrelloService: CarrelloService) {}
+  constructor(private CarrelloService: CarrelloService, private router: Router) {}
 
   chekQuantita() {
     this.disponibile = false;
@@ -56,6 +58,10 @@ export class ProductCardComponent implements OnInit {
 
   showPanel(panel: OverlayPanel, event: MouseEvent) {
     panel.toggle(event);
+  }
+
+  showInfo(){
+    this.router.navigate([Path.ProductDetails, this.prodotto.id]);
   }
 
   ngOnInit(): void {

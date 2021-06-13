@@ -2,6 +2,7 @@
   [header]="prodotto.nome"
   [subheader]="prodotto.categoria.nome"
   styleClass="card"
+  (click)="showInfo()"
 >
   <ng-template pTemplate="header">
     <div class="row" style="margin-top: 5px">
