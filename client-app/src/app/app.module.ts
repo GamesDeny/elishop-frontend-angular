@@ -22,6 +22,7 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
+import { AddPropostaComponent } from './add-proposta/add-proposta.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
     CartTableComponent,
     CheckoutComponent,
     ProductDetailsComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    AddPropostaComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,6 @@
   [header]="prodotto.nome"
   [subheader]="prodotto.categoria.nome"
   styleClass="card"
-  (click)="showInfo()"
 >
   <ng-template pTemplate="header">
     <div class="row" style="margin-top: 5px">
@@ -32,7 +31,13 @@
       </div>
     </div>
 
-    <img alt="Card" [src]="prodotto.image" class="card-img" />
+    <img
+      alt="Card"
+      [src]="prodotto.image"
+      class="card-img"
+      (click)="showInfo()"
+      pTooltip="Mostra dettagli"
+    />
   </ng-template>
   <div style="display: flex; gap: 20px">
     <h4 *ngIf="!scontato">{{ prodotto.prezzo | currency: "EUR" }}</h4>
@@ -45,6 +50,7 @@
     <button
       pButton
       pRipple
+      pTooltip="Aggiungi al Carrello"
       type="button"
       icon="pi pi-shopping-cart"
       class="p-button-rounded"

@@ -2,7 +2,7 @@
   <div class="nav-content">
     <!--<button pButton pRipple type="button" icon="pi pi-bars" class="p-button menu-button" (click)="showMenu()" ></button>-->
 
-    <div>
+    <div (click)="navToHome()" pTooltip="Torna alla Home">
       <img src="../../assets/Elishop_logo.png" class="nav-logo" alt="" />
     </div>
 
@@ -49,8 +49,7 @@
         [draggable]="false"
         [resizable]="false"
       >
-
-      <app-cart-table [righeCarrello]="righeCarrello"></app-cart-table>
+        <app-cart-table [righeCarrello]="righeCarrello"></app-cart-table>
 
         <ng-template pTemplate="footer">
           <p-button

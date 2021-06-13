@@ -121,4 +121,8 @@ export class HeaderComponent implements OnInit {
     }
    
   }
+
+  navToHome(){
+    this.router.navigate([Path.Mainpage]);
+  }
 }

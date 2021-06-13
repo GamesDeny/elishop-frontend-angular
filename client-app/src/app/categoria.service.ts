@@ -12,7 +12,15 @@ export class CategoriaService {
     private http: HttpClient
   ) { }
 
+  getAll(){
+    return this.http.get<Categoria[]>(`${environment.apiUrl}/categoria/all`);
+  }
+
   getById(id){
     return this.http.get<Categoria>(`${environment.apiUrl}/categoria/id/${id}`);
+  }
+
+  addNew(categoria){
+    return this.http.post(`${environment.apiUrl}/categoria/add`, categoria);
   }
 }
