@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl : "http://beduinomorto.ddns.net:5555/eshopelis-1.0.0//api"
+  apiUrl : "http://eshop-elis.ddns.net:5555/eshopelis-1.0.0//api"
 };
 
 /*
