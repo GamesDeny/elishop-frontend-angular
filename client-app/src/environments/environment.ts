@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl : "http://localhost:8010/proxy/api"
+  apiUrl : "https://eshop-elis.ddns.net/api"
 };
 
 /*

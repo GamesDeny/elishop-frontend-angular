@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Categoria } from 'src/models/categoria.model';
+import { Path } from 'src/models/path.enum';
 import { Proposta } from 'src/models/proposta.model';
 import { CategoriaService } from '../categoria.service';
 import { ProposteService } from '../proposte.service';
@@ -26,7 +28,8 @@ export class AddPropostaComponent implements OnInit {
   constructor(
     private ProposteService: ProposteService,
     private UtenteService: UtenteService,
-    private CategoriaService: CategoriaService
+    private CategoriaService: CategoriaService,
+    private router: Router
   ) {}
 
   initForm() {
@@ -34,7 +37,10 @@ export class AddPropostaComponent implements OnInit {
       nome: new FormControl('', [Validators.required]),
       descrizione: new FormControl('', [Validators.required]),
       categoria: new FormControl('', [Validators.required]),
-      prezzoProposto: new FormControl('', [Validators.required]),
+      prezzoProposto: new FormControl('', [
+        Validators.required,
+        Validators.min(1),
+      ]),
       quantita: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required]),
     });
@@ -44,6 +50,15 @@ export class AddPropostaComponent implements OnInit {
     this.CategoriaService.getAll().subscribe((response) => {
       this.categorie = response;
     });
+  }
+
+  checkUtente() {
+    let utente = this.UtenteService.getLoggedUser();
+    if (utente != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   ngOnInit(): void {
@@ -95,5 +110,9 @@ export class AddPropostaComponent implements OnInit {
     } else {
       this.errorAdd = true;
     }
+  }
+
+  navToLogin() {
+    this.router.navigate([Path.Login]);
   }
 }
