@@ -22,28 +22,6 @@
             formControlName="descrizione"
           ></textarea>
         </div>
-        <div class="p-field p-col-12">
-          <label for="categoria" class="form-label">Categoria Prodotto</label>
-          <p-dropdown
-            placeholder="Scegli categoria esistente o da te aggiunta"
-            [options]="categorie"
-            formControlName="categoria"
-            optionLabel="nome"
-          ></p-dropdown>
-          <br>
-          <div class="row">
-            <div class="col-2">
-              <button
-                pButton
-                pRipple
-                type="button"
-                label="Nuova categoria"
-                class="p-button p-button-success"
-                (click)="showDialog = true"
-              ></button>
-            </div>
-          </div>
-        </div>
         <br>
         <div class="p-field p-col-12 p-md-6">
           <label for="prezzoProposto" class="form-label"
@@ -113,34 +91,4 @@
     </div>
   </ng-template>
 
-  <!--Pannello creazione categoria-->
-  <p-dialog
-    header="Nuova categoria"
-    [(visible)]="showDialog"
-    [modal]="true"
-    [style]="{ width: '50vw' }"
-    [baseZIndex]="10000"
-    [draggable]="false"
-    [resizable]="false"
-  >
-    <div *ngIf="adding">
-      <app-loading-spinner></app-loading-spinner>
-    </div>
-    <input
-      *ngIf="!adding"
-      type="text"
-      pInputText
-      [(ngModel)]="nomeCategoria"
-      placeholder="Nome Categoria"
-    />
-    <p class="esaurito" *ngIf="errorAdd">Errore: Categoria già esistente</p>
-    <ng-template pTemplate="footer">
-      <p-button
-        icon="pi pi-check"
-        (click)="addCategoria()"
-        label="Aggiungi categoria"
-        styleClass="p-button-text"
-      ></p-button>
-    </ng-template>
-  </p-dialog>
 </div>

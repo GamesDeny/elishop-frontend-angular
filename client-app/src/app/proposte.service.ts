@@ -10,7 +10,7 @@ export class ProposteService {
 
   constructor(private http: HttpClient) { }
 
-  addNew(userId: number, proposta: Proposta){
-    return this.http.post(`${environment.apiUrl}/proposta/add/${userId}`, proposta);
+  addNew(proposta: Proposta){
+    return this.http.post(`${environment.apiUrl}/proposta/add`, proposta);
   }
 }

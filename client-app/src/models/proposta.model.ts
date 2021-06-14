@@ -9,4 +9,5 @@ export class Proposta{
     isAccettato: boolean;
     submissionDate: Date;
     categoria_id: number;
+    utente_id: number;
 }

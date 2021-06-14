@@ -36,19 +36,12 @@ export class AddPropostaComponent implements OnInit {
     this.formProposta = new FormGroup({
       nome: new FormControl('', [Validators.required]),
       descrizione: new FormControl('', [Validators.required]),
-      categoria: new FormControl('', [Validators.required]),
       prezzoProposto: new FormControl('', [
         Validators.required,
         Validators.min(1),
       ]),
       quantita: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required]),
-    });
-  }
-
-  getCategorie() {
-    this.CategoriaService.getAll().subscribe((response) => {
-      this.categorie = response;
     });
   }
 
@@ -62,21 +55,22 @@ export class AddPropostaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCategorie();
     this.initForm();
   }
 
   onSubmit() {
+    this.success = false;
+    this.error = false;
     this.showLoading = true;
     let utente = this.UtenteService.getLoggedUser();
     let newProposta = new Proposta();
     newProposta.nome = this.formProposta.get('nome').value;
     newProposta.descrizione = this.formProposta.get('descrizione').value;
-    newProposta.categoria_id = this.formProposta.get('categoria').value.id;
     newProposta.prezzoProposto = this.formProposta.get('prezzoProposto').value;
     newProposta.quantita = this.formProposta.get('quantita').value;
     newProposta.image = this.formProposta.get('image').value;
-    this.ProposteService.addNew(utente.id, newProposta).subscribe(
+    newProposta.utente_id = utente.id;
+    this.ProposteService.addNew(newProposta).subscribe(
       (response) => {
         this.success = true;
         this.showLoading = false;
@@ -86,30 +80,6 @@ export class AddPropostaComponent implements OnInit {
         this.showLoading = false;
       }
     );
-  }
-
-  addCategoria() {
-    let newCategoria = new Categoria();
-    let duplicato: boolean = false;
-    newCategoria.nome = this.nomeCategoria;
-    this.categorie.forEach((categoria) => {
-      if (
-        categoria.nome.trim().toLowerCase() ==
-        newCategoria.nome.trim().toLowerCase()
-      ) {
-        duplicato = true;
-      }
-    });
-
-    if (!duplicato) {
-      this.adding = true;
-      this.CategoriaService.addNew(newCategoria).subscribe((response) => {
-        this.getCategorie();
-        this.showDialog = false;
-      });
-    } else {
-      this.errorAdd = true;
-    }
   }
 
   navToLogin() {
