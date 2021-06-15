@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <br />
+  <div class="row">
+    <h3>Facci sapere la tua opinione</h3>
+  </div>
+  <br />
+  <br />
+  <div class="row" *ngIf="checkUtente(); else showRedirect">
+    <form [formGroup]="formFeedback" (ngSubmit)="onSubmit()">
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="oggetto" class="form-label">Oggetto</label>
+          <input
+            id="oggetto"
+            type="text"
+            formControlName="oggetto"
+            pInputText
+          />
+        </div>
+
+        <br />
+        <div class="p-field">
+          <label for="descrizione" class="form-label">Descrizione</label>
+          <textarea
+            pInputTextarea
+            id="descrizione"
+            formControlName="descrizione"
+          ></textarea>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <button
+              pButton
+              pRipple
+              type="submit"
+              class="p-button p-button-primary"
+              icon="pi pi-check"
+              label="Invia"
+              [disabled]="!this.formFeedback.valid || this.showLoading"
+            ></button>
+          </div>
+          <div class="col-2">
+            <div *ngIf="showLoading">
+              <i class="pi pi-spinner" style="font-size: 1rem"></i>
+            </div>
+            <p *ngIf="success" class="disponibile">
+              Grazie per il tuo feedback!
+            </p>
+            <p *ngIf="error" class="esaurito">
+              Errore durante la procedura, riprova
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <ng-template #showRedirect>
+    <app-operation-forbidden></app-operation-forbidden>
+  </ng-template>
+</div>

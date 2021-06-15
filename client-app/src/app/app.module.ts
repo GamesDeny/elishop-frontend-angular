@@ -23,6 +23,8 @@ import { ToastModule } from 'primeng/toast';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { AddPropostaComponent } from './add-proposta/add-proposta.component';
+import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
+import { OperationForbiddenComponent } from './operation-forbidden/operation-forbidden.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { AddPropostaComponent } from './add-proposta/add-proposta.component';
     CheckoutComponent,
     ProductDetailsComponent,
     OrderSuccessComponent,
-    AddPropostaComponent
+    AddPropostaComponent,
+    AddFeedbackComponent,
+    OperationForbiddenComponent
   ],
   imports: [
     BrowserModule,
