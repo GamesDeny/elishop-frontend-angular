@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
-  showOpzioni(panel:OverlayPanel, event:MouseEvent){
+  showOpzioni(panel, event){
     panel.toggle(event);
   }
 

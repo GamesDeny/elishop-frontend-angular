@@ -50,7 +50,7 @@
       <br />
       <br />
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <div class="info-label">
             <h2 class="form-label">Prezzo:</h2>
             <h2 *ngIf="!scontato">{{ prodotto.prezzo | currency: "EUR" }}</h2>
@@ -68,7 +68,7 @@
             </h2>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-8">
           <div class="info-label">
             <button
               type="button"
@@ -78,8 +78,22 @@
               label="Aggiungi al carrello"
               icon="pi pi-shopping-cart"
               [disabled]="esaurito"
-              (click)="showDialog = true"
+              (click)="addToCart()"
             ></button>
+
+            <p-inputNumber
+              [(ngModel)]="quantitaSelezionata"
+              [showButtons]="true"
+              buttonLayout="horizontal"
+              spinnerMode="horizontal"
+              decrementButtonClass="p-button-secondary"
+              incrementButtonClass="p-button-secondary"
+              incrementButtonIcon="pi pi-plus"
+              decrementButtonIcon="pi pi-minus"
+              [min]="prodotto.minOrd"
+              [max]="prodotto.maxOrd"
+            >
+            </p-inputNumber>
 
             <h3 *ngIf="!esaurito" class="disponibile">
               Disponibili: {{ prodotto.quantita }}

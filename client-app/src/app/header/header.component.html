@@ -32,13 +32,6 @@
         (click)="showOpzioni(opzioniUtente, $event)"
       ></p-button>
 
-      <!--Overlay Utente-->
-      <p-overlayPanel #opzioniUtente>
-        <ng-template pTemplate>
-          <p-menu [model]="opzioni"></p-menu>
-        </ng-template>
-      </p-overlayPanel>
-
       <!--Pannello riepilogo carrello-->
       <p-dialog
         header="Il tuo carrello"
@@ -62,4 +55,11 @@
       </p-dialog>
     </div>
   </div>
+
+  <!--Overlay Utente-->
+  <p-overlayPanel #opzioniUtente>
+    <ng-template pTemplate>
+      <p-menu [model]="opzioni"></p-menu>
+    </ng-template>
+  </p-overlayPanel>
 </div>
