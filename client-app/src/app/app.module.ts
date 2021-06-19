@@ -27,6 +27,8 @@ import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
 import { OperationForbiddenComponent } from './operation-forbidden/operation-forbidden.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { UserFeedbacksComponent } from './user-feedbacks/user-feedbacks.component';
+import { UserProposalsComponent } from './user-proposals/user-proposals.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { UserOrdersComponent } from './user-orders/user-orders.component';
     AddFeedbackComponent,
     OperationForbiddenComponent,
     UserDetailsComponent,
-    UserOrdersComponent
+    UserOrdersComponent,
+    UserFeedbacksComponent,
+    UserProposalsComponent
   ],
   imports: [
     BrowserModule,

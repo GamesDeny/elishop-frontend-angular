@@ -17,8 +17,12 @@
         <p-tabPanel header="I tuoi ordini">
           <app-user-orders [utente]="utente"></app-user-orders>
         </p-tabPanel>
-        <p-tabPanel header="Le tue proposte"></p-tabPanel>
-        <p-tabPanel header="I tuoi feedback"></p-tabPanel>
+        <p-tabPanel header="Le tue proposte">
+          <app-user-proposals [utente]="utente"></app-user-proposals>
+        </p-tabPanel>
+        <p-tabPanel header="I tuoi feedback">
+          <app-user-feedbacks [utente]="utente"></app-user-feedbacks>
+        </p-tabPanel>
       </p-tabView>
     </div>
   </div>
