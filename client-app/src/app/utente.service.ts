@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Ordine } from 'src/models/ordine.model';
 import { Utente } from 'src/models/utente.model';
 
 @Injectable({
@@ -25,5 +26,9 @@ export class UtenteService {
   
   logout(){
     sessionStorage.removeItem("utente");
+  }
+
+  getOrdini(utenteId){
+    return this.http.get<Ordine[]>(`${environment.apiUrl}/ordine/all/utente/${utenteId}`);
   }
 }

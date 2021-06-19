@@ -21,14 +21,14 @@
         icon="pi pi-user"
         styleClass="p-button-rounded nav-button"
         (click)="navToLogin()"
-        *ngIf="!isLogged()"
+        *ngIf="!logged"
       ></p-button>
 
       <p-button
         [label]="utente.nome"
         icon="pi pi-user"
         styleClass="p-button-rounded nav-button"
-        *ngIf="isLogged()"
+        *ngIf="logged"
         (click)="showOpzioni(opzioniUtente, $event)"
       ></p-button>
 

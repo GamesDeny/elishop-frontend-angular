@@ -85,4 +85,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
   }
+
+  navHome(){
+    this.router.navigate([Path.Mainpage]);
+  }
 }

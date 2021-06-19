@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   carrello: RigaOrdine[];
   righeCarrello: RigaCarrello[];
   prezzoTotale: number;
+  logged: boolean;
 
   constructor(
     public CarrelloService: CarrelloService,
@@ -34,11 +35,11 @@ export class HeaderComponent implements OnInit {
     private UtenteService: UtenteService
   ) {}
 
-  isLogged(): boolean {
-    if (this.utente != null && this.utente != undefined) {
-      return true;
+  isLogged() {
+    if (this.UtenteService.getLoggedUser() != null && this.UtenteService.getLoggedUser() != undefined) {
+      this.logged = true;
     } else {
-      return false;
+      this.logged =  false;
     }
   }
 
@@ -54,9 +55,18 @@ export class HeaderComponent implements OnInit {
         escape: false,
         command: () =>{ 
           this.UtenteService.logout();
-          window.location.reload();
+          this.isLogged();
+          this.router.navigate([Path.Mainpage]);          
+          //window.location.reload();
         },
       },
+      {
+        label: "I tuoi dettagli",
+        icon: 'pi pi-fw pi-info-circle',
+        command: () => {
+          this.router.navigate([Path.UserDetails, this.utente.id]);
+        }
+      }
     ];
   }
 
@@ -65,6 +75,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLogged();
     this.initOpzioni();
   }
 

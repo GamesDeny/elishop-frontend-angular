@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row tab-row">
+    <div class="col-4 offset-1">
+      <h1>
+        {{ utente.nome }} {{ utente.cognome }} - {{ utente.siglaResidenza }}
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-1">
+      <p>{{ utente.mail }}</p>
+    </div>
+  </div>
+  <div class="row tab-row">
+    <div class="col-10 offset-1">
+      <p-tabView>
+        <p-tabPanel header="I tuoi ordini">
+          <app-user-orders [utente]="utente"></app-user-orders>
+        </p-tabPanel>
+        <p-tabPanel header="Le tue proposte"></p-tabPanel>
+        <p-tabPanel header="I tuoi feedback"></p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>

@@ -25,6 +25,8 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { AddPropostaComponent } from './add-proposta/add-proposta.component';
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
 import { OperationForbiddenComponent } from './operation-forbidden/operation-forbidden.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { OperationForbiddenComponent } from './operation-forbidden/operation-for
     OrderSuccessComponent,
     AddPropostaComponent,
     AddFeedbackComponent,
-    OperationForbiddenComponent
+    OperationForbiddenComponent,
+    UserDetailsComponent,
+    UserOrdersComponent
   ],
   imports: [
     BrowserModule,

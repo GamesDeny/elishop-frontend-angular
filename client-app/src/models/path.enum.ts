@@ -5,5 +5,6 @@ export enum Path{
     Register = "register",
     Checkout = "checkout",
     OrderSuccess = "order-success",
-    ProductDetails = "product-details"
+    ProductDetails = "product-details",
+    UserDetails = "user-details"
 }

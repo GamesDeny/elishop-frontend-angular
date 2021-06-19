@@ -9,6 +9,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RegisterComponent } from './register/register.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
       {
         path: Path.ProductDetails + '/:id',
         component: ProductDetailsComponent
+      },
+      {
+        path: Path.UserDetails + '/:id',
+        component: UserDetailsComponent
       }
     ]
   }

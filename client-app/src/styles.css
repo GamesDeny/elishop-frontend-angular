@@ -117,6 +117,15 @@
   height: 100px;
 }
 
+.register-logo{
+  width: 300px;
+  height: 100px;
+}
+
+.register-logo:hover{
+  cursor: pointer;
+}
+
 .form-label {
   color: orange;
 }
