@@ -21,6 +21,6 @@ export class CategoriaService {
   }
 
   addNew(categoria){
-    return this.http.post(`${environment.apiUrl}/categoria/add`, categoria);
+    return this.http.post<Categoria>(`${environment.apiUrl}/categoria/add`, categoria);
   }
 }

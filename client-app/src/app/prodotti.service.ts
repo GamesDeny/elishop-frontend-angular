@@ -21,4 +21,12 @@ export class ProdottiService {
   getById(id){
     return this.http.get<Prodotto>(`${environment.apiUrl}${this.urlSuffix}/id/${id}`);
   }
+
+  remove(id){
+    return this.http.delete(`${environment.apiUrl}${this.urlSuffix}/remove/${id}`, {observe: 'response'});
+  }
+
+  addNew(prodotto){
+    return this.http.post(`${environment.apiUrl}${this.urlSuffix}/add`, prodotto);
+  }
 }

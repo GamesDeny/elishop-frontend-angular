@@ -72,7 +72,6 @@ export class HeaderComponent implements OnInit, DoCheck {
       {
         label: 'I tuoi dettagli',
         icon: 'pi pi-fw pi-info-circle',
-        disabled: this.isAdmin(),
         command: () => {
           this.router.navigate([Path.UserDetails, this.utente.id]);
         },
@@ -151,16 +150,20 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   checkRoute() {
     var url: string = this.router.url;
-    console.log(this.router.url);
+    //console.log(this.router.url);
 
-    if (url == '/' || url =='/admin-tabs') {
+    if (url == '/' || url == '/admin-tabs') {
       this.home = true;
     } else {
       this.home = false;
     }
   }
 
-  isAdmin():boolean{
-    return this.UtenteService.checkIfAdmin();
+  isAdmin(): boolean {
+    if (this.utente != null) {
+      return this.UtenteService.checkIfAdmin();
+    } else {
+      return false;
+    }
   }
 }

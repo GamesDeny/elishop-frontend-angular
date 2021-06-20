@@ -23,7 +23,10 @@ import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import {DropdownModule} from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
-import {ToolbarModule} from 'primeng/toolbar'
+import {ToolbarModule} from 'primeng/toolbar';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {InplaceModule} from 'primeng/inplace';
 
 @NgModule({
   declarations: [],
@@ -48,7 +51,9 @@ import {ToolbarModule} from 'primeng/toolbar'
     InputTextareaModule,
     DropdownModule,
     TagModule,
-    ToolbarModule
+    ToolbarModule,
+    ConfirmDialogModule,
+    InplaceModule
   ],
 })
 export class PrimengModule {}
