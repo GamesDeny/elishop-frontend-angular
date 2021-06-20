@@ -23,6 +23,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import {DropdownModule} from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
+import {ToolbarModule} from 'primeng/toolbar'
 
 @NgModule({
   declarations: [],
@@ -46,7 +47,8 @@ import { TagModule } from 'primeng/tag';
     TooltipModule,
     InputTextareaModule,
     DropdownModule,
-    TagModule
+    TagModule,
+    ToolbarModule
   ],
 })
 export class PrimengModule {}

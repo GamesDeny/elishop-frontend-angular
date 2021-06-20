@@ -52,8 +52,13 @@
   margin-left: 10px;
 }
 
-.nav-logo:hover{
+.nav-logo:hover {
   cursor: pointer;
+}
+
+.home-hint {
+  margin-top: 15px;
+  display: inline-block;
 }
 
 .main-container {
@@ -117,12 +122,12 @@
   height: 100px;
 }
 
-.register-logo{
+.register-logo {
   width: 300px;
   height: 100px;
 }
 
-.register-logo:hover{
+.register-logo:hover {
   cursor: pointer;
 }
 

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Path } from 'src/models/path.enum';
+import { AdminTabsComponent } from './admin-tabs/admin-tabs.component';
+import { AdminGuard } from './admin.guard';
 import { AuthenticationGuard } from './authentication.guard';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
@@ -43,7 +45,13 @@ const routes: Routes = [
       },
       {
         path: Path.UserDetails + '/:id',
-        component: UserDetailsComponent
+        component: UserDetailsComponent,
+        canActivate: [AuthenticationGuard]
+      },
+      {
+        path: Path.AdminTabs,
+        component: AdminTabsComponent,
+        canActivate: [AdminGuard]
       }
     ]
   }

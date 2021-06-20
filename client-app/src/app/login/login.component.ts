@@ -7,56 +7,53 @@ import { UtenteService } from '../utente.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   loginForm;
   showLoading: boolean;
   error: boolean;
-  
-  constructor(
-    private UtenteService: UtenteService,
-    private router: Router
-  ) { }
 
-  initForm(){
-    this.loginForm = new FormGroup(
-      {
-        username: new FormControl("", [Validators.required]),
-        password: new FormControl("", [Validators.required])
-      }
-    )
+  constructor(private UtenteService: UtenteService, private router: Router) {}
+
+  initForm() {
+    this.loginForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+    });
   }
 
-  login(){
+  login() {
     this.showLoading = true;
     console.log(this.loginForm.value);
     this.UtenteService.login(this.loginForm.value).subscribe(
       (response) => {
         console.log(response);
-        sessionStorage.setItem("utente", JSON.stringify(response));
-        this.router.navigate([Path.Mainpage]);
+        sessionStorage.setItem('utente', JSON.stringify(response));
+        if (response.isAdmin) {
+          this.router.navigate([Path.AdminTabs]);
+        } else {
+          this.router.navigate([Path.Mainpage]);
+        }
       },
       (error) => {
         this.error = true;
       },
-      ()=>{
+      () => {
         this.showLoading = false;
       }
-    )
+    );
   }
 
-  navToRegister(){
+  navToRegister() {
     this.router.navigate([Path.Register]);
   }
 
-  navToHome(){
+  navToHome() {
     this.router.navigate([Path.Mainpage]);
   }
 
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
-
 }

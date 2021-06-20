@@ -29,6 +29,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { UserFeedbacksComponent } from './user-feedbacks/user-feedbacks.component';
 import { UserProposalsComponent } from './user-proposals/user-proposals.component';
+import { AdminTabsComponent } from './admin-tabs/admin-tabs.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { UserProposalsComponent } from './user-proposals/user-proposals.componen
     UserDetailsComponent,
     UserOrdersComponent,
     UserFeedbacksComponent,
-    UserProposalsComponent
+    UserProposalsComponent,
+    AdminTabsComponent,
+    AdminProductsComponent
   ],
   imports: [
     BrowserModule,

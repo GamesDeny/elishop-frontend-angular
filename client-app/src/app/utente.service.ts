@@ -18,8 +18,13 @@ export class UtenteService {
     return utente;
   }
 
+  checkIfAdmin(): boolean{
+    let utente = this.getLoggedUser();
+    return utente.isAdmin;
+  }
+
   login(utente){
-    return this.http.post(`${environment.apiUrl}/utente/login`, utente);
+    return this.http.post<Utente>(`${environment.apiUrl}/utente/login`, utente);
   }
 
   register(utente){

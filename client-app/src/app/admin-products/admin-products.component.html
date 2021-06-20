@@ -1,0 +1,94 @@
+<div *ngIf="showLoading; else showTable">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<ng-template #showTable>
+  <p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+      <button
+        pButton
+        pRipple
+        label="Nuovo"
+        icon="pi pi-plus"
+        class="p-button-success p-mr-2"
+      ></button>
+      <!--(click)="nuovoProdotto()"-->
+    </ng-template>
+  </p-toolbar>
+
+  <p-table
+    #catalogo
+    [value]="prodotti"
+    [rows]="10"
+    [paginator]="true"
+    [globalFilterFields]="['nome', 'prezzo', 'quantita']"
+    dataKey="id"
+  >
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (input)="catalogo.filterGlobal($event.target.value, 'contains')"
+            placeholder="Cerca per nome"
+          />
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="nome">
+          Nome <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th>Immagine</th>
+        <th pSortableColumn="prezzo">
+          Prezzo <p-sortIcon field="prezzo"></p-sortIcon>
+        </th>
+        <th pSortableColumn="quantita">
+          Quantità <p-sortIcon field="quantita"></p-sortIcon>
+        </th>
+        <th pSortableColumn="categoria">
+          Categoria <p-sortIcon field="categoria"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-prodotto>
+      <tr>
+        <td>{{ prodotto.nome }}</td>
+        <td>
+          <img
+            [src]="prodotto.image"
+            [alt]="prodotto.nome"
+            width="100"
+            class="p-shadow-4"
+          />
+        </td>
+        <td>{{ prodotto.prezzo | currency: "EUR" }}</td>
+        <td>{{ prodotto.quantita }}</td>
+        <td>{{ prodotto.categoria.nome }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-success p-mr-2"
+            (click)="editProduct(product)"
+          ></button>
+          <!--(click)="modificaProdotto(prodotto)"-->
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-warning"
+            (click)="deleteProduct(product)"
+          ></button>
+          <!--(click)="eliminaProdotto(prodotto)"-->
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-template>

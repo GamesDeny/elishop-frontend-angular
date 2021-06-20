@@ -6,5 +6,6 @@ export enum Path{
     Checkout = "checkout",
     OrderSuccess = "order-success",
     ProductDetails = "product-details",
-    UserDetails = "user-details"
+    UserDetails = "user-details",
+    AdminTabs = "admin-tabs"
 }

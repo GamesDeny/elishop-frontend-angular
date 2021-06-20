@@ -6,6 +6,10 @@
       <img src="../../assets/Elishop_logo.png" class="nav-logo" alt="" />
     </div>
 
+    <div class="home-hint" *ngIf="!home">
+      <p class="form-label"><-Home</p>
+    </div>
+
     <div class="nav-left">
       <p-button
         label="Il tuo carrello"
@@ -14,6 +18,7 @@
         [badge]="this.CarrelloService.carrello.length"
         badgeClass="p-badge-danger"
         (click)="getCarrello()"
+        *ngIf="!isAdmin()"
       ></p-button>
 
       <p-button
