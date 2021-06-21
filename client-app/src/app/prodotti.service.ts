@@ -29,4 +29,8 @@ export class ProdottiService {
   addNew(prodotto){
     return this.http.post(`${environment.apiUrl}${this.urlSuffix}/add`, prodotto);
   }
+  
+  edit(id, prodotto){
+    return this.http.patch(`${environment.apiUrl}${this.urlSuffix}/update/${id}`, prodotto);
+  }
 }

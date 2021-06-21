@@ -77,9 +77,9 @@
             pRipple
             icon="pi pi-pencil"
             class="p-button-rounded p-button-success p-mr-2"
-            (click)="editProduct(product)"
+            (click)="modificaProdotto(prodotto)"
           ></button>
-          <!--(click)="modificaProdotto(prodotto)"-->
+          <!---->
           <button
             pButton
             pRipple
@@ -192,6 +192,102 @@
       icon="pi pi-check"
       class="p-button-text"
       (click)="salvaProdotto()"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<!--Modifica prodotto-->
+<p-dialog
+  [(visible)]="dialModifica"
+  [style]="{ width: '450px' }"
+  header="Modifica Prodotto"
+  styleClass="p-fluid"
+  *ngIf="prodottoSelezionato"
+>
+  <ng-template pTemplate="content">
+    <form [formGroup]="formModifica">
+      <div class="p-field">
+        <label for="nome">Nome</label>
+        <input type="text" pInputText id="nome" formControlName="nome" />
+      </div>
+      <div class="p-field">
+        <label for="descrizione">Descrizione</label>
+        <textarea
+          pInputTextarea
+          id="descrizione"
+          formControlName="descrizione"
+        ></textarea>
+      </div>
+      <div class="p-field">
+        <label for="categoria">Categoria</label>
+        <p-dropdown
+          [options]="categorie"
+          optionLabel="nome"
+          formControlName="categoria"
+        ></p-dropdown>
+        <br />
+        <p-inplace closable="closable" [style]="{ 'min-height': '33px' }">
+          <ng-template pTemplate="display"> Nuova categoria </ng-template>
+          <ng-template pTemplate="content">
+            <input type="text" formControlName="nomeCategoria" pInputText />
+            <button
+              pButton
+              pRipple
+              icon="pi pi-check"
+              class="p-button-rounded p-button-success p-mr-2"
+              (click)="nuovaCategoria()"
+            ></button>
+          </ng-template>
+        </p-inplace>
+      </div>
+      <div class="p-field">
+        <label for="prezzo">Prezzo</label>
+        <p-inputNumber
+          id="prezzo"
+          mode="currency"
+          currency="EUR"
+          locale="it-IT"
+          formControlName="prezzo"
+        ></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="sconto">Sconto</label>
+        <p-inputNumber id="sconto" formControlName="sconto"></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="quantita">Quantità</label>
+        <p-inputNumber id="quantita" formControlName="quantita"></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="minOrd">Ordinazione minima</label>
+        <p-inputNumber id="minOrd" formControlName="minOrd"></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="maxOrd">Ordinazione massima</label>
+        <p-inputNumber id="maxOrd" formControlName="maxOrd"></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="image">URL Immagine</label>
+        <input type="text" pInputText id="image" formControlName="image" />
+      </div>
+    </form>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Annulla"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="dialModifica = false"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Salva"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="salvaModifiche()"
     ></button>
   </ng-template>
 </p-dialog>

@@ -19,6 +19,9 @@ export class AdminProductsComponent implements OnInit {
   categorie: Categoria[];
   dialAggiunta: boolean;
   formAggiunta;
+  formModifica;
+  prodottoSelezionato: Prodotto;
+  dialModifica: boolean;
 
   constructor(
     private ProdottiService: ProdottiService,
@@ -90,6 +93,24 @@ export class AdminProductsComponent implements OnInit {
     this.dialAggiunta = true;
   }
 
+  modificaProdotto(prodotto: Prodotto){
+    this.prodottoSelezionato = prodotto;
+    this.getCategorie();
+    this.formModifica = new FormGroup({
+      nome: new FormControl(this.prodottoSelezionato.nome, [Validators.required]),
+      descrizione: new FormControl(this.prodottoSelezionato.descrizione, [Validators.required]),
+      categoria: new FormControl(this.prodottoSelezionato.categoria, [Validators.required]),
+      prezzo: new FormControl(this.prodottoSelezionato.prezzo, [Validators.required, Validators.min(1)]),
+      sconto: new FormControl(this.prodottoSelezionato.sconto, [Validators.required]),
+      quantita: new FormControl(this.prodottoSelezionato.quantita, [Validators.required, Validators.min(1)]),
+      minOrd: new FormControl(this.prodottoSelezionato.minOrd, [Validators.required, Validators.min(1)]),
+      maxOrd: new FormControl(this.prodottoSelezionato.maxOrd, [Validators.required]),
+      image: new FormControl(this.prodottoSelezionato.image, [Validators.required]),
+      nomeCategoria: new FormControl('')
+    });
+    this.dialModifica = true;
+  }
+
   nuovaCategoria() {    
     this.CategoriaService.addNew({
       nome: this.formAggiunta.get('nomeCategoria').value,
@@ -109,5 +130,21 @@ export class AdminProductsComponent implements OnInit {
     this.ProdottiService.addNew(newProdotto).subscribe((response) => {
       this.getProdotti();
     });
+  }
+
+  salvaModifiche(){
+    this.dialModifica = false;
+    this.showLoading = true;
+
+    let id = this.prodottoSelezionato.id;
+    this.prodottoSelezionato = this.formModifica.value;
+    this.prodottoSelezionato.categoria_id =  this.formModifica.get('categoria').value.id;
+    delete this.prodottoSelezionato.categoria;
+
+    this.ProdottiService.edit(id, this.prodottoSelezionato).subscribe(
+      (response) => {
+        this.getProdotti();
+      }
+    )
   }
 }
