@@ -31,6 +31,7 @@ import { UserFeedbacksComponent } from './user-feedbacks/user-feedbacks.componen
 import { UserProposalsComponent } from './user-proposals/user-proposals.component';
 import { AdminTabsComponent } from './admin-tabs/admin-tabs.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
     UserFeedbacksComponent,
     UserProposalsComponent,
     AdminTabsComponent,
-    AdminProductsComponent
+    AdminProductsComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,

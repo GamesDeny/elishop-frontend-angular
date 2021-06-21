@@ -1,37 +1,58 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Ordine } from 'src/models/ordine.model';
 import { Pagamento } from 'src/models/pagamento.model';
 import { Prodotto } from 'src/models/prodotto.model';
 import { RigaOrdine } from 'src/models/riga-ordine.model';
 import { TipoPagamento } from 'src/models/tipo-pagamento.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrdineService {
-
   orderSuccess: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  addNewRiga(rigaOrdine){
-    return this.http.post<RigaOrdine>(`${environment.apiUrl}/rigaordine/add`, rigaOrdine);
+  getAll() {
+    return this.http.get<Ordine[]>(`${environment.apiUrl}/ordine/all`);
   }
 
-  getTipiPagamento(){
-    return this.http.get<TipoPagamento[]>(`${environment.apiUrl}/tipometodo/all`);
+  addNewRiga(rigaOrdine) {
+    return this.http.post<RigaOrdine>(
+      `${environment.apiUrl}/rigaordine/add`,
+      rigaOrdine
+    );
   }
 
-  addNewPagamento(pagamento){
-    return this.http.post<Pagamento>(`${environment.apiUrl}/pagamento/add`, pagamento);
+  getTipiPagamento() {
+    return this.http.get<TipoPagamento[]>(
+      `${environment.apiUrl}/tipometodo/all`
+    );
   }
 
-  addNewOrdine(righeOrdine, idUtente, idPagamento){
-    return this.http.post(`${environment.apiUrl}/ordine/add/${idUtente}/${idPagamento}`, righeOrdine);
+  addNewPagamento(pagamento) {
+    return this.http.post<Pagamento>(
+      `${environment.apiUrl}/pagamento/add`,
+      pagamento
+    );
   }
 
-  getProdotti(ordineId){
-    return this.http.get<Prodotto[]>(`${environment.apiUrl}/prodotto/all/ordine/${ordineId}`);
+  addNewOrdine(righeOrdine, idUtente, idPagamento) {
+    return this.http.post(
+      `${environment.apiUrl}/ordine/add/${idUtente}/${idPagamento}`,
+      righeOrdine
+    );
+  }
+
+  getProdotti(ordineId) {
+    return this.http.get<Prodotto[]>(
+      `${environment.apiUrl}/prodotto/all/ordine/${ordineId}`
+    );
+  }
+
+  evadi(id, ordine) {
+    return this.http.patch(`${environment.apiUrl}/ordine/update/${id}`, ordine);
   }
 }

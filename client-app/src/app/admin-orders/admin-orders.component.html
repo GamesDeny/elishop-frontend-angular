@@ -1,0 +1,96 @@
+<div *ngIf="showLoading; else showTable">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<ng-template #showTable>
+  <p-table [value]="ordini" dataKey="id">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem"></th>
+        <th>Numero ordine</th>
+        <th pSortableColumn="quantita">Prodotti ordinati</th>
+        <th pSortableColumn="stato">Stato</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ordine let-expanded="expanded">
+      <tr>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            [pRowToggler]="ordine"
+            class="p-button-text p-button-rounded p-button-plain"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+          ></button>
+        </td>
+        <td>
+          {{ ordine.id }}
+        </td>
+        <td>
+          {{ ordine.prodotti.length }}
+        </td>
+        <td>
+          <p-tag *ngIf="ordine.evaso" severity="success" value="Evaso"></p-tag>
+          <p-tag
+            *ngIf="!ordine.evaso"
+            severity="warning"
+            value="Non evaso"
+          ></p-tag>
+        </td>
+        <td *ngIf="!ordine.evaso">
+          <div>
+            <button
+              pButton
+              pRipple
+              icon="pi pi-check"
+              class="p-button-rounded p-button-success p-mr-2"
+              (click)="evadi(ordine)"
+              pTooltip="Evadi ordine"
+            ></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-ordine>
+      <tr>
+        <td colspan="4">
+          <div class="p-p-3">
+            <p-table [value]="ordine.prodotti" dataKey="id">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="id">Id</th>
+                  <th pSortableColumn="nome">Nome</th>
+                  <th pSortableColumn="prezzo">Prezzo</th>
+                  <th pSortableColumn="immagine">Foto</th>
+                  <th style="width: 4rem"></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-prodotto>
+                <tr>
+                  <td>
+                    {{ prodotto.id }}
+                  </td>
+                  <td>
+                    {{ prodotto.nome }}
+                  </td>
+                  <td>
+                    {{ prodotto.prezzo | currency: "EUR" }}
+                  </td>
+                  <td>
+                    <img
+                      [src]="prodotto.image"
+                      [alt]="prodotto.nome"
+                      width="100"
+                      class="p-shadow-4"
+                    />
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-template>

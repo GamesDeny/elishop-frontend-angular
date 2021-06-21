@@ -1,21 +1,17 @@
 <div class="container-fluid">
-    <div class="row" class="tab-row">
-      <div class="col-10 offset-1">
-        <p-tabView>
-          <p-tabPanel header="Catalogo Prodotti">
-            <app-admin-products></app-admin-products>
-          </p-tabPanel>
-          <p-tabPanel header="Ordini in attesa">
-              
-          </p-tabPanel>
-          <p-tabPanel header="Proposte degli utenti">
-            
-          </p-tabPanel>
-          <p-tabPanel header="Feedback degli utenti">
-            
-          </p-tabPanel>
-          <p-tabPanel header="Utenti"></p-tabPanel>
-        </p-tabView>
-      </div>
+  <div class="row" class="tab-row">
+    <div class="col-10 offset-1">
+      <p-tabView>
+        <p-tabPanel header="Catalogo Prodotti">
+          <app-admin-products></app-admin-products>
+        </p-tabPanel>
+        <p-tabPanel header="Ordini in attesa">
+          <app-admin-orders></app-admin-orders>
+        </p-tabPanel>
+        <p-tabPanel header="Proposte degli utenti"> </p-tabPanel>
+        <p-tabPanel header="Feedback degli utenti"> </p-tabPanel>
+        <p-tabPanel header="Utenti"></p-tabPanel>
+      </p-tabView>
     </div>
   </div>
+</div>

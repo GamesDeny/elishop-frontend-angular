@@ -21,12 +21,12 @@ import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
-import {ToolbarModule} from 'primeng/toolbar';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService} from 'primeng/api';
-import {InplaceModule} from 'primeng/inplace';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { InplaceModule } from 'primeng/inplace';
 
 @NgModule({
   declarations: [],
@@ -56,4 +56,4 @@ import {InplaceModule} from 'primeng/inplace';
     InplaceModule
   ],
 })
-export class PrimengModule {}
+export class PrimengModule { }
