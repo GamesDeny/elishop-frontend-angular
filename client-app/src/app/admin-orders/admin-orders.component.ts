@@ -22,6 +22,11 @@ export class AdminOrdersComponent implements OnInit {
     this.showLoading = true;
     this.OrdineService.getAll().subscribe((response) => {
       this.ordini = response;
+      this.ordini.forEach((ordine) => {
+        this.UtenteService.getById(ordine.utente_id).subscribe((response) => {
+          ordine.utente = response;
+        });
+      });
       var index = 0;
       Observable.from(this.ordini)
         .concatMap((ordine) => this.OrdineService.getProdotti(ordine.id))

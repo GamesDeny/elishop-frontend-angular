@@ -9,6 +9,7 @@
         <th style="width: 3rem"></th>
         <th>Numero ordine</th>
         <th pSortableColumn="quantita">Prodotti ordinati</th>
+        <th>Effettuato da</th>
         <th pSortableColumn="stato">Stato</th>
       </tr>
     </ng-template>
@@ -30,6 +31,7 @@
         <td>
           {{ ordine.prodotti.length }}
         </td>
+        <td *ngIf="ordine.utente">{{ ordine.utente.username }}</td>
         <td>
           <p-tag *ngIf="ordine.evaso" severity="success" value="Evaso"></p-tag>
           <p-tag
@@ -54,7 +56,7 @@
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-ordine>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <div class="p-p-3">
             <p-table [value]="ordine.prodotti" dataKey="id">
               <ng-template pTemplate="header">

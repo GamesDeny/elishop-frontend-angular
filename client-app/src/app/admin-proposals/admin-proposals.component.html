@@ -1,0 +1,47 @@
+<div *ngIf="showLoading; else showTable">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<ng-template #showTable>
+  <p-table #props [value]="proposte" [rows]="10" [paginator]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Data</th>
+        <th>Nome</th>
+        <th>Descrizione</th>
+        <th>Quantità</th>
+        <th>Prezzo proposto</th>
+        <th>Effettuata da</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-proposta>
+      <tr>
+        <td>{{ proposta.submissionDate }}</td>
+        <td>{{ proposta.nome }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            class="p-button-primary"
+            label="Mostra descrizione"
+            (click)="showProposta(proposta)"
+          ></button>
+        </td>
+        <td>{{ proposta.quantita }}</td>
+        <td>{{ proposta.prezzoProposto }}</td>
+        <td *ngIf="proposta.utente">{{ proposta.utente.username }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-template>
+
+<!--Descrizione proposta-->
+<p-dialog
+  [header]="selectedProposta.nome"
+  [(visible)]="descrizione"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  *ngIf="selectedProposta"
+>
+  <p>{{ selectedProposta.descrizione }}</p>
+</p-dialog>
