@@ -3,7 +3,7 @@
 </div>
 
 <ng-template #showTable>
-  <p-table [value]="feedbacks">
+  <p-table [value]="feedbacks" *ngIf="feedbacks">
     <ng-template pTemplate="header">
       <tr>
         <th>Data</th>
@@ -31,7 +31,7 @@
             (click)="showFeedback(feedback)"
           ></button>
         </td>
-        <td>{{ feedback.utente.username }}</td>
+        <td *ngIf="feedback.utente">{{ feedback.utente.username }}</td>
         <td>
           <p-tag
             *ngIf="feedback.isAccepted"

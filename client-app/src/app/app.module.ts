@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { PrimengModule } from './primeng/primeng.module';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ProductsTableComponent } from './products-table/products-table.component';
@@ -18,7 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { CartRowComponent } from './cart-row/cart-row.component';
 import { CartTableComponent } from './cart-table/cart-table.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
@@ -34,7 +34,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminProposalsComponent } from './admin-proposals/admin-proposals.component';
 import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.component';
-
+import { AdminUsersComponent } from './admin-users/admin-users.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,8 @@ import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.compo
     AdminProductsComponent,
     AdminOrdersComponent,
     AdminProposalsComponent,
-    AdminFeedbacksComponent
+    AdminFeedbacksComponent,
+    AdminUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,9 +74,9 @@ import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.compo
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ToastModule
+    ToastModule,
   ],
-  providers: [MessageService],
-  bootstrap: [AppComponent]
+  providers: [MessageService, ConfirmationService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -3,18 +3,31 @@
     <div class="col-10 offset-1">
       <p-tabView>
         <p-tabPanel header="Catalogo Prodotti">
-          <app-admin-products></app-admin-products>
+          <ng-template pTemplate="content">
+            <app-admin-products></app-admin-products>
+          </ng-template>
         </p-tabPanel>
         <p-tabPanel header="Ordini in attesa">
-          <app-admin-orders></app-admin-orders>
+          <ng-template pTemplate="content">
+            <app-admin-orders></app-admin-orders>
+          </ng-template>
         </p-tabPanel>
         <p-tabPanel header="Proposte degli utenti">
-          <app-admin-proposals></app-admin-proposals>
+          <ng-template pTemplate="content">
+            <app-admin-proposals></app-admin-proposals>
+          </ng-template>
         </p-tabPanel>
         <p-tabPanel header="Feedback degli utenti">
-          <app-admin-feedbacks></app-admin-feedbacks>
+          <ng-template pTemplate="content">
+            <app-admin-feedbacks></app-admin-feedbacks>
+          </ng-template>
         </p-tabPanel>
-        <p-tabPanel header="Utenti"></p-tabPanel>
+        <p-tabPanel header="Utenti">
+          <ng-template pTemplate="content">
+            <app-admin-users></app-admin-users>
+          </ng-template>
+          <!--<app-admin-users></app-admin-users>-->
+        </p-tabPanel>
       </p-tabView>
     </div>
   </div>

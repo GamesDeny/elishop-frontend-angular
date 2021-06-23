@@ -3,7 +3,13 @@
 </div>
 
 <ng-template #showTable>
-  <p-table #props [value]="proposte" [rows]="10" [paginator]="true">
+  <p-table
+    #props
+    [value]="proposte"
+    [rows]="10"
+    [paginator]="true"
+    *ngIf="proposte"
+  >
     <ng-template pTemplate="header">
       <tr>
         <th>Data</th>

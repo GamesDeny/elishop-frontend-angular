@@ -22,6 +22,10 @@ export class UtenteService {
     return utente.isAdmin;
   }
 
+  getAll() {
+    return this.http.get<Utente[]>(`${environment.apiUrl}/utente/all`);
+  }
+
   getById(id) {
     return this.http.get<Utente>(`${environment.apiUrl}/utente/id/${id}`);
   }
@@ -54,5 +58,9 @@ export class UtenteService {
     return this.http.get<Proposta[]>(
       `${environment.apiUrl}/proposta/all/utente/${utenteId}`
     );
+  }
+
+  update(id, utente) {
+    return this.http.patch(`${environment.apiUrl}/utente/update/${id}`, utente);
   }
 }
