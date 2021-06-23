@@ -40,6 +40,9 @@ export class AdminUsersComponent implements OnInit {
   salvaModifiche() {
     this.modifica = false;
     this.showLoading = true;
+    delete this.utenteSelezionato.mail;
+    delete this.utenteSelezionato.username;
+    delete this.utenteSelezionato.siglaResidenza;
     this.UtenteService.update(
       this.utenteSelezionato.id,
       this.utenteSelezionato
