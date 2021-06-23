@@ -13,7 +13,20 @@ export class ProposteService {
     return this.http.get<Proposta[]>(`${environment.apiUrl}/proposta/all`);
   }
 
+  getNotAccepted() {
+    return this.http.get<Proposta[]>(
+      `${environment.apiUrl}/proposta/accettati`
+    );
+  }
+
   addNew(proposta: Proposta) {
     return this.http.post(`${environment.apiUrl}/proposta/add`, proposta);
+  }
+
+  update(id, proposta) {
+    return this.http.patch(
+      `${environment.apiUrl}/proposta/update/${id}`,
+      proposta
+    );
   }
 }

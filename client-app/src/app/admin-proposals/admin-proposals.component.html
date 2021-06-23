@@ -28,8 +28,26 @@
           ></button>
         </td>
         <td>{{ proposta.quantita }}</td>
-        <td>{{ proposta.prezzoProposto }}</td>
+        <td>{{ proposta.prezzoProposto | currency: "EUR" }}</td>
         <td *ngIf="proposta.utente">{{ proposta.utente.username }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-check"
+            class="p-button-rounded p-button-success p-mr-2"
+            pTooltip="Accetta proposta"
+            (click)="accetta(proposta)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-times"
+            class="p-button-rounded p-button-danger p-mr-2"
+            pTooltip="Rifiuta proposta"
+            (click)="rifiuta(proposta)"
+          ></button>
+        </td>
       </tr>
     </ng-template>
   </p-table>
@@ -44,4 +62,111 @@
   *ngIf="selectedProposta"
 >
   <p>{{ selectedProposta.descrizione }}</p>
+</p-dialog>
+
+<!--Accettazione proposta-->
+<p-dialog
+  [header]="selectedProposta.nome"
+  [(visible)]="accettazione"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  *ngIf="selectedProposta"
+>
+  <ng-template pTemplate="content">
+    <form [formGroup]="formAccettazione">
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="categoria">Categoria</label>
+          <p-dropdown
+            [options]="categorie"
+            optionLabel="nome"
+            formControlName="categoria"
+          ></p-dropdown>
+          <br />
+          <p-inplace closable="closable" [style]="{ 'min-height': '33px' }">
+            <ng-template pTemplate="display"> Nuova categoria </ng-template>
+            <ng-template pTemplate="content">
+              <input type="text" formControlName="nuovaCategoria" pInputText />
+              <button
+                pButton
+                pRipple
+                icon="pi pi-check"
+                class="p-button-rounded p-button-success p-mr-2"
+                pTooltip="Conferma"
+                (click)="nuovaCategoria()"
+              ></button>
+            </ng-template>
+          </p-inplace>
+          <span class="disponibile" *ngIf="categoriaAggiunta"
+            >Categoria aggiunta</span
+          >
+        </div>
+        <br />
+        <div class="p-field">
+          <label for="image">URL Immagine</label>
+          <input type="text" pInputText formControlName="image" />
+        </div>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Annulla"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="accettazione = false"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Accetta proposta"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="confermaAccettazione()"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<!--Rifiuto proposta-->
+<p-dialog
+  [header]="selectedProposta.nome"
+  [(visible)]="rifiuto"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  *ngIf="selectedProposta"
+>
+  <ng-template pTemplate="content">
+    <form [formGroup]="formRifiuto">
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="motivoRifiuto">Motivo rifiuto</label>
+          <textarea
+            id="motivoRifiuto"
+            pInputTextarea
+            formControlName="motivoRifiuto"
+          ></textarea>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Annulla"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="accettazione = false"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Rifiuta proposta"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="confermaRifiuto()"
+    ></button>
+  </ng-template>
 </p-dialog>

@@ -15,6 +15,7 @@ export class UserProposalsComponent implements OnInit {
   selectedProposta: Proposta;
   showLoading: boolean;
   showDialog: boolean;
+  rifiuto: boolean;
 
   constructor(private UtenteService: UtenteService) {}
 
@@ -33,5 +34,10 @@ export class UserProposalsComponent implements OnInit {
   showProposta(proposta) {
     this.selectedProposta = proposta;
     this.showDialog = true;
+  }
+
+  showRifiuto(proposta) {
+    this.selectedProposta = proposta;
+    this.rifiuto = true;
   }
 }
