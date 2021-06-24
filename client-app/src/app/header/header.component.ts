@@ -64,9 +64,9 @@ export class HeaderComponent implements OnInit, DoCheck {
         escape: false,
         command: () => {
           this.UtenteService.logout();
+          //window.location.reload();
           this.isLogged();
           this.router.navigate([Path.Mainpage]);
-          //window.location.reload();
         },
       },
       {
@@ -160,7 +160,10 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
 
   isAdmin(): boolean {
-    if (this.utente != null) {
+    if (
+      this.UtenteService.getLoggedUser() != null &&
+      this.UtenteService.getLoggedUser() != undefined
+    ) {
       return this.UtenteService.checkIfAdmin();
     } else {
       return false;
