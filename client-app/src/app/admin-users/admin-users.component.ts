@@ -43,6 +43,7 @@ export class AdminUsersComponent implements OnInit {
     delete this.utenteSelezionato.mail;
     delete this.utenteSelezionato.username;
     delete this.utenteSelezionato.siglaResidenza;
+    delete this.utenteSelezionato.password;
     this.UtenteService.update(
       this.utenteSelezionato.id,
       this.utenteSelezionato
