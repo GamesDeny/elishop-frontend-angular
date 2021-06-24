@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.showLoading = true;
+    this.error = false;
     console.log(this.loginForm.value);
     this.UtenteService.login(this.loginForm.value).subscribe(
       (response) => {
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         this.error = true;
+        this.showLoading = false;
       },
       () => {
         this.showLoading = false;
