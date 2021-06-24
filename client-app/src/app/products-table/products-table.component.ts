@@ -41,9 +41,11 @@ export class ProductsTableComponent implements OnInit {
   }
 
   getCategorie() {
-    let i=0;
+    let i = 0;
     Observable.from(this.prodotti)
-      .concatMap((prodotto) => this.CategoriaService.getById(prodotto.id))
+      .concatMap((prodotto) =>
+        this.CategoriaService.getById(prodotto.categoria_id)
+      )
       .subscribe((response) => {
         this.prodotti[i].categoria = response;
         i++;
