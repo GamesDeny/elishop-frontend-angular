@@ -4,33 +4,47 @@ import { environment } from 'src/environments/environment';
 import { Prodotto } from 'src/models/prodotto.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProdottiService {
-
   urlSuffix = '/prodotto';
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
-  getAll(){
-    return this.http.get<Prodotto[]>(`${environment.apiUrl}${this.urlSuffix}/all`);
+  getAll() {
+    return this.http.get<Prodotto[]>(
+      `${environment.apiUrl}${this.urlSuffix}/all`
+    );
   }
 
-  getById(id){
-    return this.http.get<Prodotto>(`${environment.apiUrl}${this.urlSuffix}/id/${id}`);
+  getById(id) {
+    return this.http.get<Prodotto>(
+      `${environment.apiUrl}${this.urlSuffix}/id/${id}`
+    );
   }
 
-  remove(id){
-    return this.http.delete(`${environment.apiUrl}${this.urlSuffix}/remove/${id}`, {observe: 'response'});
+  remove(id) {
+    return this.http.delete(
+      `${environment.apiUrl}${this.urlSuffix}/remove/${id}`,
+      { observe: 'response' }
+    );
   }
 
-  addNew(prodotto){
-    return this.http.post(`${environment.apiUrl}${this.urlSuffix}/add`, prodotto);
+  addNew(prodotto) {
+    return this.http.post(
+      `${environment.apiUrl}${this.urlSuffix}/add`,
+      prodotto
+    );
   }
-  
-  edit(id, prodotto){
-    return this.http.patch(`${environment.apiUrl}${this.urlSuffix}/update/${id}`, prodotto);
+
+  edit(id, prodotto) {
+    return this.http.patch(
+      `${environment.apiUrl}${this.urlSuffix}/update/${id}`,
+      prodotto
+    );
+  }
+
+  getVendite() {
+    return this.http.get(`${environment.apiUrl}/rigaordine/statistics`);
   }
 }

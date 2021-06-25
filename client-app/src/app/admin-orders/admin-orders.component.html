@@ -45,12 +45,27 @@
           ></button>
         </td>
         <td>
-          {{ ordine.id }}
+          <span class="riga">
+            {{ ordine.id }}
+          </span>
+          <span class="riga-sm"> Numero ordine: {{ ordine.id }} </span>
         </td>
         <td>
-          {{ ordine.prodotti.length }}
+          <span class="riga">
+            {{ ordine.prodotti.length }}
+          </span>
+          <span class="riga-sm">
+            Prodotti ordinati: {{ ordine.prodotti.length }}
+          </span>
         </td>
-        <td *ngIf="ordine.utente">{{ ordine.utente.username }}</td>
+        <td *ngIf="ordine.utente">
+          <span class="riga">
+            {{ ordine.utente.usetname }}
+          </span>
+          <span class="riga-sm">
+            Effettuato da: {{ ordine.utente.username }}
+          </span>
+        </td>
         <td>
           <p-tag *ngIf="ordine.evaso" severity="success" value="Evaso"></p-tag>
           <p-tag

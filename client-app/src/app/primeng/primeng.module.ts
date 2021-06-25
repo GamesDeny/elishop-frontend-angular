@@ -28,6 +28,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { InplaceModule } from 'primeng/inplace';
 import { CheckboxModule } from 'primeng/checkbox';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [],
@@ -56,6 +57,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     ConfirmDialogModule,
     InplaceModule,
     CheckboxModule,
+    ChartModule,
   ],
 })
 export class PrimengModule {}

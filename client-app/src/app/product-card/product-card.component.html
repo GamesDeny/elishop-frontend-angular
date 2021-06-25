@@ -84,6 +84,21 @@
     decrementButtonIcon="pi pi-minus"
     [min]="prodotto.minOrd"
     [max]="prodotto.maxOrd"
+    class="selettore-quantita"
+  >
+  </p-inputNumber>
+  <p-inputNumber
+    [(ngModel)]="quantitaSelezionata"
+    [showButtons]="true"
+    buttonLayout="vertical"
+    spinnerMode="vertical"
+    decrementButtonClass="p-button-secondary"
+    incrementButtonClass="p-button-secondary"
+    incrementButtonIcon="pi pi-plus"
+    decrementButtonIcon="pi pi-minus"
+    [min]="prodotto.minOrd"
+    [max]="prodotto.maxOrd"
+    class="selettore-quantita-sm"
   >
   </p-inputNumber>
   <ng-template pTemplate="footer">

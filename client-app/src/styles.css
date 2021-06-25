@@ -38,6 +38,22 @@
   .home-hint {
     display: none !important;
   }
+
+  .selettore-quantita {
+    display: none;
+  }
+
+  .selettore-quantita-sm {
+    display: block;
+  }
+
+  .riga {
+    display: none;
+  }
+
+  .riga-sm {
+    display: block;
+  }
 }
 
 /*Desktop*/
@@ -63,6 +79,22 @@
   }
 
   .cart-btn-small {
+    display: none;
+  }
+
+  .selettore-quantita {
+    display: block;
+  }
+
+  .selettore-quantita-sm {
+    display: none;
+  }
+
+  .riga {
+    display: block;
+  }
+
+  .riga-sm {
     display: none;
   }
 }

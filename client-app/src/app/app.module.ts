@@ -36,6 +36,7 @@ import { AdminProposalsComponent } from './admin-proposals/admin-proposals.compo
 import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AdminSellStatsComponent } from './admin-sell-stats/admin-sell-stats.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AdminFeedbacksComponent,
     AdminUsersComponent,
     NotFoundComponent,
+    AdminSellStatsComponent,
   ],
   imports: [
     BrowserModule,
