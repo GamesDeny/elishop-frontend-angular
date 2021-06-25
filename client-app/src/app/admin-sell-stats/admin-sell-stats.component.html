@@ -1,1 +1,9 @@
-<p>admin-sell-stats works!</p>
+<h5>Prodotti più ordinati</h5>
+
+<div *ngIf="showLoading; else showChart">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<ng-template #showChart>
+  <p-chart type="bar" [data]="dataSet"></p-chart>
+</ng-template>

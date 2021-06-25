@@ -15,7 +15,7 @@ import { ProdottiService } from '../prodotti.service';
 })
 export class AdminProductsComponent implements OnInit {
   showLoading: boolean;
-  prodotti: Prodotto[];
+  prodotti: Prodotto[] = [];
   categorie: Categoria[];
   dialAggiunta: boolean;
   formAggiunta;
@@ -31,8 +31,13 @@ export class AdminProductsComponent implements OnInit {
 
   getProdotti() {
     this.showLoading = true;
+    this.prodotti = [];
     this.ProdottiService.getAll().subscribe((response) => {
-      this.prodotti = response;
+      response.forEach((prod) => {
+        if (!prod.isDeleted) {
+          this.prodotti.push(prod);
+        }
+      });
       var index = 0;
       Observable.from(this.prodotti)
         .concatMap((prodotto) =>
@@ -158,10 +163,11 @@ export class AdminProductsComponent implements OnInit {
     this.showLoading = true;
 
     let id = this.prodottoSelezionato.id;
+    let isDeleted = this.prodottoSelezionato.isDeleted;
     this.prodottoSelezionato = this.formModifica.value;
-    this.prodottoSelezionato.categoria_id = this.formModifica.get(
-      'categoria'
-    ).value.id;
+    this.prodottoSelezionato.categoria_id =
+      this.formModifica.get('categoria').value.id;
+    this.prodottoSelezionato.isDeleted = isDeleted;
     delete this.prodottoSelezionato.categoria;
 
     this.ProdottiService.edit(id, this.prodottoSelezionato).subscribe(

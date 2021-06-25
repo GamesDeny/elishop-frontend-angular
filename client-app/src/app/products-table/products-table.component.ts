@@ -12,7 +12,7 @@ import { ProdottiService } from '../prodotti.service';
   styleUrls: ['./products-table.component.css'],
 })
 export class ProductsTableComponent implements OnInit {
-  prodotti: Prodotto[];
+  prodotti: Prodotto[] = [];
   showLoading: boolean;
 
   constructor(
@@ -24,10 +24,14 @@ export class ProductsTableComponent implements OnInit {
 
   getProdotti() {
     this.showLoading = true;
-
+    this.prodotti = [];
     this.ProdottiService.getAll().subscribe(
       (response) => {
-        this.prodotti = response;
+        response.forEach((prod) => {
+          if (!prod.isDeleted) {
+            this.prodotti.push(prod);
+          }
+        });
         console.log(this.prodotti);
         this.getCategorie();
       },
