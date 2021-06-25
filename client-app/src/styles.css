@@ -184,6 +184,11 @@
   height: 150px;
 }
 
+.not-found {
+  width: 250px;
+  height: 250px;
+}
+
 .img-info {
   width: 400px !important;
   height: 400px !important;

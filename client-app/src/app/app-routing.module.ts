@@ -7,6 +7,7 @@ import { AuthenticationGuard } from './authentication.guard';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RegisterComponent } from './register/register.component';
@@ -16,11 +17,11 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 const routes: Routes = [
   {
     path: Path.Login,
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: Path.Register,
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: Path.Mainpage,
@@ -28,12 +29,12 @@ const routes: Routes = [
     children: [
       {
         path: Path.TabsPage,
-        component: TabsComponent
+        component: TabsComponent,
       },
       {
         path: Path.Checkout,
         component: CheckoutComponent,
-        canActivate: [AuthenticationGuard]
+        canActivate: [AuthenticationGuard],
       },
       {
         path: Path.OrderSuccess,
@@ -41,24 +42,28 @@ const routes: Routes = [
       },
       {
         path: Path.ProductDetails + '/:id',
-        component: ProductDetailsComponent
+        component: ProductDetailsComponent,
       },
       {
         path: Path.UserDetails + '/:id',
         component: UserDetailsComponent,
-        canActivate: [AuthenticationGuard]
+        canActivate: [AuthenticationGuard],
       },
       {
         path: Path.AdminTabs,
         component: AdminTabsComponent,
-        canActivate: [AdminGuard]
-      }
-    ]
-  }
+        canActivate: [AdminGuard],
+      },
+      {
+        path: '**',
+        component: NotFoundComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

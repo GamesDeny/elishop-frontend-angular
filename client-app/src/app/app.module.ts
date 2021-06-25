@@ -35,6 +35,7 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminProposalsComponent } from './admin-proposals/admin-proposals.component';
 import { AdminFeedbacksComponent } from './admin-feedbacks/admin-feedbacks.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     AdminProposalsComponent,
     AdminFeedbacksComponent,
     AdminUsersComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
