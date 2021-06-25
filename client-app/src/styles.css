@@ -1,5 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
 
+/*Media query*/
+
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+  .nav-logo {
+    display: none;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .cart-btn {
+    display: none;
+  }
+
+  .nav-logo-small {
+    display: block;
+  }
+
+  .nav-button-small {
+    display: block;
+  }
+
+  .cart-btn-small {
+    display: block;
+  }
+
+  .img-info {
+    width: 250px !important;
+    height: 250px !important;
+    padding: 0 !important;
+    object-fit: scale-down !important;
+  }
+
+  .home-hint {
+    display: none !important;
+  }
+}
+
+/*Desktop*/
+@media only screen and (min-width: 768px) {
+  .nav-logo {
+    display: block;
+  }
+
+  .nav-button-small {
+    display: none;
+  }
+
+  .nav-logo-small {
+    display: none;
+  }
+
+  .nav-button {
+    display: block;
+  }
+
+  .cart-btn {
+    display: block;
+  }
+
+  .cart-btn-small {
+    display: none;
+  }
+}
+
 .navbar {
   background: rgb(255, 255, 255);
   background: -moz-linear-gradient(
@@ -46,9 +113,23 @@
   margin-top: 5px !important;
 }
 
+.nav-button-user {
+  margin-top: 5px !important;
+}
+
+.nav-button-small {
+  margin-top: 5px !important;
+}
+
 .nav-logo {
   height: 60px;
   width: 180px;
+  margin-left: 10px;
+}
+
+.nav-logo-small {
+  height: 60px;
+  width: 60px;
   margin-left: 10px;
 }
 
@@ -190,8 +271,8 @@
 }
 
 .img-info {
-  width: 400px !important;
-  height: 400px !important;
+  width: 400px;
+  height: 400px;
   padding: 5px;
   object-fit: contain !important;
 }

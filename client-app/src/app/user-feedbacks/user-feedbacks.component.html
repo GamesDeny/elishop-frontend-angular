@@ -3,7 +3,7 @@
 </div>
 
 <ng-template #showTable>
-  <p-table [value]="feedbacks">
+  <p-table [value]="feedbacks" [responsive]="true">
     <ng-template pTemplate="header">
       <tr>
         <th>Data</th>
@@ -52,6 +52,7 @@
     [style]="{ width: '50vw' }"
     [baseZIndex]="10000"
     *ngIf="selectedFeedback"
+    [breakpoints]="{ '960px': '75vw' }"
   >
     <p>{{ selectedFeedback.descrizione }}</p>
   </p-dialog>

@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   @Input() utente: Utente;
 
   opzioni: MenuItem[];
+  opzioniUtente: boolean;
   showDialog: boolean;
   carrello: RigaOrdine[];
   righeCarrello: RigaCarrello[];
@@ -57,30 +58,54 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
 
   initOpzioni() {
-    this.opzioni = [
-      {
-        label: "<span class='logout-label'>Esci</span>",
-        icon: 'pi pi-fw pi-sign-out logout-label',
-        escape: false,
-        command: () => {
-          this.UtenteService.logout();
-          //window.location.reload();
-          this.isLogged();
-          this.router.navigate([Path.Mainpage]);
-        },
-      },
-      {
-        label: 'I tuoi dettagli',
-        icon: 'pi pi-fw pi-info-circle',
-        command: () => {
-          this.router.navigate([Path.UserDetails, this.utente.id]);
-        },
-      },
-    ];
+    if (
+      this.UtenteService.getLoggedUser() != null &&
+      this.UtenteService.getLoggedUser() != undefined
+    ) {
+      if (this.isAdmin()) {
+        this.opzioni = [
+          {
+            label: "<span class='logout-label'>Esci</span>",
+            icon: 'pi pi-fw pi-sign-out logout-label',
+            escape: false,
+            command: () => {
+              this.UtenteService.logout();
+              //window.location.reload();
+              this.isLogged();
+              this.opzioniUtente = false;
+              this.router.navigate([Path.Mainpage]);
+            },
+          },
+        ];
+      } else {
+        this.opzioni = [
+          {
+            label: "<span class='logout-label'>Esci</span>",
+            icon: 'pi pi-fw pi-sign-out logout-label',
+            escape: false,
+            command: () => {
+              this.UtenteService.logout();
+              //window.location.reload();
+              this.isLogged();
+              this.opzioniUtente = false;
+              this.router.navigate([Path.Mainpage]);
+            },
+          },
+          {
+            label: 'I tuoi dettagli',
+            icon: 'pi pi-fw pi-info-circle',
+            command: () => {
+              this.opzioniUtente = false;
+              this.router.navigate([Path.UserDetails, this.utente.id]);
+            },
+          },
+        ];
+      }
+    }
   }
 
-  showOpzioni(panel, event) {
-    panel.toggle(event);
+  showOpzioni() {
+    this.opzioniUtente = true;
   }
 
   ngOnInit(): void {
@@ -139,7 +164,9 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
 
   navToHome() {
-    this.router.navigate([Path.Mainpage]);
+    if (!this.isAdmin()) {
+      this.router.navigate([Path.Mainpage]);
+    }
   }
 
   navigationEnd() {

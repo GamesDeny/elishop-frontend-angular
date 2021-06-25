@@ -11,14 +11,14 @@
       </div>
       <br />
       <div class="row">
-        <div class="col-6">
+        <div class="col-8 col-md-6">
           <img
             [src]="prodotto.image"
             alt="immagine prodotto"
             class="img-info"
           />
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <div class="row">
             <div class="col-6">
               <div class="container-info">
@@ -50,7 +50,7 @@
       <br />
       <br />
       <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <div class="info-label">
             <h2 class="form-label">Prezzo:</h2>
             <h2 *ngIf="!scontato">{{ prodotto.prezzo | currency: "EUR" }}</h2>
@@ -68,18 +68,26 @@
             </h2>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-12 col-md-8">
           <div class="info-label">
-            <button
+            <p-button
               type="button"
-              pButton
-              pRipple
-              class="p-button p-button primary"
+              styleClass="p-button p-button primary"
+              class="cart-btn"
               label="Aggiungi al carrello"
               icon="pi pi-shopping-cart"
               [disabled]="esaurito"
               (click)="addToCart()"
-            ></button>
+            ></p-button>
+
+            <p-button
+              type="button"
+              styleClass="p-button-rounded p-button primary"
+              class="cart-btn-small"
+              icon="pi pi-shopping-cart"
+              [disabled]="esaurito"
+              (click)="addToCart()"
+            ></p-button>
 
             <p-inputNumber
               [(ngModel)]="quantitaSelezionata"
@@ -94,12 +102,11 @@
               [max]="prodotto.maxOrd"
             >
             </p-inputNumber>
-
-            <h3 *ngIf="!esaurito" class="disponibile">
-              Disponibili: {{ prodotto.quantita }}
-            </h3>
-            <h3 *ngIf="esaurito" class="esaurito">Non disponibile</h3>
           </div>
+          <h3 *ngIf="!esaurito" class="disponibile">
+            Disponibili: {{ prodotto.quantita }}
+          </h3>
+          <h3 *ngIf="esaurito" class="esaurito">Non disponibile</h3>
         </div>
       </div>
     </div>
@@ -115,6 +122,7 @@
     [baseZIndex]="10000"
     [draggable]="false"
     [resizable]="false"
+    [breakpoints]="{ '960px': '75vw' }"
   >
     <h5>{{ prodotto.nome }}</h5>
     <p-inputNumber

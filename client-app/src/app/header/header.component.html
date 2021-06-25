@@ -4,6 +4,11 @@
 
     <div (click)="navToHome()" pTooltip="Torna alla Home">
       <img src="../../assets/Elishop_logo.png" class="nav-logo" alt="" />
+      <img
+        src="../../assets/Elishop_logo_small.png"
+        class="nav-logo-small"
+        alt=""
+      />
     </div>
 
     <div class="home-hint" *ngIf="!home">
@@ -14,7 +19,18 @@
       <p-button
         label="Il tuo carrello"
         icon="pi pi-shopping-cart"
-        styleClass="p-button-warning nav-button"
+        styleClass="p-button-warning"
+        class="nav-button"
+        [badge]="this.CarrelloService.carrello.length"
+        badgeClass="p-badge-danger"
+        (click)="getCarrello()"
+        *ngIf="!isAdmin()"
+      ></p-button>
+
+      <p-button
+        icon="pi pi-shopping-cart"
+        styleClass="p-button-rounded p-button-warning "
+        class="nav-button-small"
         [badge]="this.CarrelloService.carrello.length"
         badgeClass="p-badge-danger"
         (click)="getCarrello()"
@@ -24,7 +40,8 @@
       <p-button
         label="Accedi/Registrati"
         icon="pi pi-user"
-        styleClass="p-button-rounded nav-button"
+        styleClass="p-button-rounded "
+        class="nav-button-user"
         (click)="navToLogin()"
         *ngIf="!logged"
       ></p-button>
@@ -32,9 +49,10 @@
       <p-button
         [label]="utente.nome"
         icon="pi pi-user"
-        styleClass="p-button-rounded nav-button"
+        styleClass="p-button-rounded "
+        class="nav-button-user"
         *ngIf="logged"
-        (click)="showOpzioni(opzioniUtente, $event)"
+        (click)="showOpzioni()"
       ></p-button>
 
       <!--Pannello riepilogo carrello-->
@@ -46,6 +64,7 @@
         [baseZIndex]="10000"
         [draggable]="false"
         [resizable]="false"
+        [breakpoints]="{ '960px': '75vw' }"
       >
         <app-cart-table [righeCarrello]="righeCarrello"></app-cart-table>
 
@@ -62,9 +81,14 @@
   </div>
 
   <!--Overlay Utente-->
-  <p-overlayPanel #opzioniUtente>
-    <ng-template pTemplate>
-      <p-menu [model]="opzioni"></p-menu>
-    </ng-template>
-  </p-overlayPanel>
+
+  <p-dialog
+    header="Opzioni utente"
+    [(visible)]="opzioniUtente"
+    [style]="{ width: '50vw' }"
+    [baseZIndex]="10000"
+    [breakpoints]="{ '960px': '75vw' }"
+  >
+    <p-menu [model]="opzioni"></p-menu>
+  </p-dialog>
 </div>
