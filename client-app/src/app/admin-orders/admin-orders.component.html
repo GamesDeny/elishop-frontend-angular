@@ -26,7 +26,6 @@
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 3rem"></th>
-        <th>Numero ordine</th>
         <th pSortableColumn="quantita">Prodotti ordinati</th>
         <th>Effettuato da</th>
         <th pSortableColumn="stato">Stato</th>
@@ -43,12 +42,6 @@
             class="p-button-text p-button-rounded p-button-plain"
             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
           ></button>
-        </td>
-        <td>
-          <span class="riga">
-            {{ ordine.id }}
-          </span>
-          <span class="riga-sm"> Numero ordine: {{ ordine.id }} </span>
         </td>
         <td>
           <span class="riga">
