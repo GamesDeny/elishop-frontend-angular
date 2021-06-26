@@ -7,7 +7,6 @@
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 3rem"></th>
-        <th>Numero ordine</th>
         <th pSortableColumn="quantita">Prodotti ordinati</th>
         <th pSortableColumn="stato">Stato</th>
       </tr>
@@ -15,6 +14,7 @@
     <ng-template pTemplate="body" let-ordine let-expanded="expanded">
       <tr>
         <td>
+          <span class="riga-sm">Visualizza prodotti</span>
           <button
             type="button"
             pButton
@@ -24,11 +24,14 @@
             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
           ></button>
         </td>
+
         <td>
-          {{ ordine.id }}
-        </td>
-        <td>
-          {{ ordine.prodotti.length }}
+          <span class="riga">
+            {{ ordine.prodotti.length }}
+          </span>
+          <span class="riga-sm">
+            Prodotti ordinati: {{ ordine.prodotti.length }}
+          </span>
         </td>
         <td>
           <p-tag *ngIf="ordine.evaso" severity="success" value="Evaso"></p-tag>
