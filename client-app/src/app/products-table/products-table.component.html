@@ -11,15 +11,15 @@
       #dv
       [value]="prodotti"
       layout="grid"
-      [globalFilterFields]="['nome', 'categoria.nome']"
+      filterBy="nome"
       dataKey="id"
     >
       <ng-template pTemplate="header">
         <input
           type="search"
           pInputText
-          placeholder="Cerca per nome o categoria"
-          (input)="dv.filterGlobal($event.target.value)"
+          placeholder="Cerca per nome"
+          (input)="dv.filter($event.target.value)"
         />
       </ng-template>
       <ng-template let-prodotto pTemplate="gridItem">
